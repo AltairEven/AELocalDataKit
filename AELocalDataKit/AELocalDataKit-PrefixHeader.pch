@@ -1,0 +1,22 @@
+//
+//  AELocalDataKit-PrefixHeader.pch
+//  AELocalDataKit
+//
+//  Created by Altair on 21/06/2017.
+//  Copyright © 2017 Altair. All rights reserved.
+//
+
+#ifndef AELocalDataKit_PrefixHeader_pch
+#define AELocalDataKit_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* AELocalDataKit_PrefixHeader_pch */
+
+
+#import <objc/runtime.h>
+
+#import "AELDOperationMode.h"
+#import "AELDPlugMode.h"
+#import "AELDResponse.h"
