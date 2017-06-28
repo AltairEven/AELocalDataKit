@@ -33,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) NSDate *aeld_LastUseDate; //上一次使用时间，不会被置为nil，除非对象被移出缓存
 
+@property (nonatomic, strong) NSDate *aeld_ExpireDate; //失效时间，默认为nil，即长期有效。如果设置了失效时间并且到期了，内存缓存会在自动清理时，将其清除；磁盘缓存会在主动清理过期文件或者启动app时，将其清除
+
 /**
  判断是否是合法的缓存对象
 

@@ -60,6 +60,14 @@
     return objc_getAssociatedObject(self, @"AELocalDataKit_CacheObject_LastUseDate");
 }
 
+- (void)setAeld_ExpireDate:(NSDate *)aeld_ExpireDate {
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_ExpireDate", aeld_ExpireDate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSDate *)aeld_ExpireDate {
+    return objc_getAssociatedObject(self, @"AELocalDataKit_CacheObject_ExpireDate");
+}
+
 #pragma mark NSObject - Public methods
 
 - (BOOL)aeld_ValidateCacheObject {

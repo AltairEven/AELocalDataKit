@@ -21,6 +21,8 @@
 		8F35F67C1EFCC1F7007D7D0E /* AELDCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35F67A1EFCC1F7007D7D0E /* AELDCache.m */; };
 		8F35F67F1EFCE7AC007D7D0E /* AELDMemoryCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F35F67D1EFCE7AC007D7D0E /* AELDMemoryCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F35F6801EFCE7AC007D7D0E /* AELDMemoryCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35F67E1EFCE7AC007D7D0E /* AELDMemoryCache.m */; };
+		8F35F6B11F025DA0007D7D0E /* AELDDiskCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F35F6AF1F025DA0007D7D0E /* AELDDiskCache.h */; };
+		8F35F6B21F025DA0007D7D0E /* AELDDiskCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F35F6B01F025DA0007D7D0E /* AELDDiskCache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		8F35F67A1EFCC1F7007D7D0E /* AELDCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AELDCache.m; sourceTree = "<group>"; };
 		8F35F67D1EFCE7AC007D7D0E /* AELDMemoryCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AELDMemoryCache.h; sourceTree = "<group>"; };
 		8F35F67E1EFCE7AC007D7D0E /* AELDMemoryCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AELDMemoryCache.m; sourceTree = "<group>"; };
+		8F35F6AF1F025DA0007D7D0E /* AELDDiskCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AELDDiskCache.h; sourceTree = "<group>"; };
+		8F35F6B01F025DA0007D7D0E /* AELDDiskCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AELDDiskCache.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,8 @@
 				8F35F67A1EFCC1F7007D7D0E /* AELDCache.m */,
 				8F35F67D1EFCE7AC007D7D0E /* AELDMemoryCache.h */,
 				8F35F67E1EFCE7AC007D7D0E /* AELDMemoryCache.m */,
+				8F35F6AF1F025DA0007D7D0E /* AELDDiskCache.h */,
+				8F35F6B01F025DA0007D7D0E /* AELDDiskCache.m */,
 			);
 			path = Memory;
 			sourceTree = "<group>";
@@ -166,6 +172,7 @@
 				8F35F66C1EFA1E7E007D7D0E /* AELocalDataKit-PrefixHeader.pch in Headers */,
 				8F35F67F1EFCE7AC007D7D0E /* AELDMemoryCache.h in Headers */,
 				8F35F67B1EFCC1F7007D7D0E /* AELDCache.h in Headers */,
+				8F35F6B11F025DA0007D7D0E /* AELDDiskCache.h in Headers */,
 				8F35F6691EFA1BE5007D7D0E /* AELocalDataSocket.h in Headers */,
 				8F35F6731EFA1F8E007D7D0E /* AELDOperationMode.h in Headers */,
 				8F35F66F1EFA1F7D007D7D0E /* AELDPlugMode.h in Headers */,
@@ -246,6 +253,7 @@
 				8F35F6701EFA1F7D007D7D0E /* AELDPlugMode.m in Sources */,
 				8F35F6781EFA26F1007D7D0E /* AELDResponse.m in Sources */,
 				8F35F6801EFCE7AC007D7D0E /* AELDMemoryCache.m in Sources */,
+				8F35F6B21F025DA0007D7D0E /* AELDDiskCache.m in Sources */,
 				8F35F66A1EFA1BE5007D7D0E /* AELocalDataSocket.m in Sources */,
 				8F35F67C1EFCC1F7007D7D0E /* AELDCache.m in Sources */,
 			);

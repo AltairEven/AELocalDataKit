@@ -23,7 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.cache = [AELDMemoryCache memoryCacheWithName:@"AltairEvenLocalDataMemoryCache" evictAction:^(AELDMemoryCache * _Nonnull cache, id  _Nonnull object) {
+    self.cache = [AELDMemoryCache memoryCacheWithName:@"AltairEvenLocalDataMemoryCache" willEvictAction:^(AELDMemoryCache * _Nonnull cache, id  _Nonnull object) {
         NSLog(@"%@ will evict object with identifier:%@", cache.cacheName, [object aeld_CacheIdentifier]);
     }];
     [self.cache setCacheBytesLimit:1024*1024*50];

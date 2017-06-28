@@ -13,18 +13,18 @@
 		8F35F6981F00F8C0007D7D0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F35F6961F00F8C0007D7D0E /* Main.storyboard */; };
 		8F35F69A1F00F8C0007D7D0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F35F6991F00F8C0007D7D0E /* Assets.xcassets */; };
 		8F35F69D1F00F8C0007D7D0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F35F69B1F00F8C0007D7D0E /* LaunchScreen.storyboard */; };
-		8F35F6AC1F00FE3A007D7D0E /* AELocalDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F35F6A71F00F922007D7D0E /* AELocalDataKit.framework */; };
-		8F35F6AD1F00FE3A007D7D0E /* AELocalDataKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8F35F6A71F00F922007D7D0E /* AELocalDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8F35F6B81F02603A007D7D0E /* AELocalDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F35F6B71F02603A007D7D0E /* AELocalDataKit.framework */; };
+		8F35F6B91F02603A007D7D0E /* AELocalDataKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8F35F6B71F02603A007D7D0E /* AELocalDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8F35F6AE1F00FE3A007D7D0E /* Embed Frameworks */ = {
+		8F35F6B61F026001007D7D0E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8F35F6AD1F00FE3A007D7D0E /* AELocalDataKit.framework in Embed Frameworks */,
+				8F35F6B91F02603A007D7D0E /* AELocalDataKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -42,7 +42,7 @@
 		8F35F6991F00F8C0007D7D0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8F35F69C1F00F8C0007D7D0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8F35F69E1F00F8C0007D7D0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8F35F6A71F00F922007D7D0E /* AELocalDataKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AELocalDataKit.framework; path = "../../../../../../../../Library/Developer/Xcode/DerivedData/TestAELD-dbbnwzqkuacplugicodikveuqluu/Build/Products/Debug-iphonesimulator/AELocalDataKit.framework"; sourceTree = "<group>"; };
+		8F35F6B71F02603A007D7D0E /* AELocalDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AELocalDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F35F6AC1F00FE3A007D7D0E /* AELocalDataKit.framework in Frameworks */,
+				8F35F6B81F02603A007D7D0E /* AELocalDataKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +60,7 @@
 		8F35F6811F00F8C0007D7D0E = {
 			isa = PBXGroup;
 			children = (
+				8F35F6B71F02603A007D7D0E /* AELocalDataKit.framework */,
 				8F35F68C1F00F8C0007D7D0E /* TestAELD */,
 				8F35F68B1F00F8C0007D7D0E /* Products */,
 				8F35F6A41F00F912007D7D0E /* Frameworks */,
@@ -101,7 +102,6 @@
 		8F35F6A41F00F912007D7D0E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8F35F6A71F00F922007D7D0E /* AELocalDataKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -116,7 +116,7 @@
 				8F35F6861F00F8C0007D7D0E /* Sources */,
 				8F35F6871F00F8C0007D7D0E /* Frameworks */,
 				8F35F6881F00F8C0007D7D0E /* Resources */,
-				8F35F6AE1F00FE3A007D7D0E /* Embed Frameworks */,
+				8F35F6B61F026001007D7D0E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -340,6 +340,7 @@
 				8F35F6A31F00F8C0007D7D0E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

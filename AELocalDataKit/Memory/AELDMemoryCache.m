@@ -76,8 +76,8 @@
     }
     __weak typeof(self) weakSelf = self;
     //通知即将移除的回调函数
-    if (weakSelf.EvictAction) {
-        weakSelf.EvictAction(weakSelf, object);
+    if (weakSelf.WillEvictAction) {
+        weakSelf.WillEvictAction(weakSelf, object);
     }
     //移除缓存对象
     [self.cachePool removeObjectForKey:[object aeld_CacheIdentifier]];
@@ -92,10 +92,10 @@
 
 #pragma mark Public methods
 
-+ (instancetype)memoryCacheWithName:(NSString *)name evictAction:(nullable void (^)(AELDMemoryCache * _Nonnull, id _Nonnull))action {
++ (instancetype)memoryCacheWithName:(NSString *)name willEvictAction:(nullable void (^)(AELDMemoryCache * _Nonnull, id _Nonnull))action {
     AELDMemoryCache *cache = [[AELDMemoryCache alloc] init];
     cache.cacheName = name;
-    cache.EvictAction = action;
+    cache.WillEvictAction = action;
     return cache;
 }
 
@@ -104,8 +104,18 @@
         return;
     }
     dispatch_barrier_async(self.synchronizationQueue, ^{
+        NSArray *totalCaches = [self.cachePool allValues];
+        //先清理过期的
+        for (id cachedObj in totalCaches) {
+            NSDate *currentDate = [NSDate date];
+            NSDate *expireDate = [cachedObj aeld_ExpireDate];
+            if ([currentDate timeIntervalSinceDate:expireDate] > 0) {
+                [self reallyRemoveCacheObject:cachedObj];
+            }
+        }
+        //还需要继续清理
         if (self.currentUsage > self.cacheBytesLimit) {
-            //先按照权重降序排列
+            //按照权重降序排列
             NSArray *allCaches = [self.cachePool allValues];
             allCaches = [allCaches sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
                 NSNumber *clearWeight1 = [NSNumber numberWithInteger:[obj1 aeld_AutoClearWeight]];
