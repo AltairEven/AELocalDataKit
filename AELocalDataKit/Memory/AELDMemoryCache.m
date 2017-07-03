@@ -30,12 +30,12 @@
 
 - (void)addAeld_MemoryCache_HitCount {
     NSNumber *count = [NSNumber numberWithInteger:self.aeld_HitCount + 1];
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_HitCount", count, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_HitCount", count, OBJC_ASSOCIATION_ASSIGN);
 }
 
 - (void)clearAeld_MemoryCache_HitCount {
     NSNumber *count = [NSNumber numberWithInteger:0];
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_HitCount", count, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_HitCount", count, OBJC_ASSOCIATION_ASSIGN);
 }
 
 - (void)setAeld_MemoryCache_LastUseDate:(NSDate * _Nullable)aeld_LastUseDate {

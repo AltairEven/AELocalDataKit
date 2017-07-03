@@ -53,7 +53,7 @@
 }
 
 - (void)setAeld_LastUseDate:(NSDate *)aeld_LastUseDate {
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_LastUseDate", aeld_LastUseDate, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_LastUseDate", aeld_LastUseDate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (NSDate *)aeld_LastUseDate {
@@ -125,10 +125,18 @@
 }
 
 - (NSInteger)aeld_AutoClearWeight {
+    //在大数量循环时，会比较影响性能
+    return [self aeld_AutoClearWeightAtDate:[NSDate date]];
+}
+
+- (NSInteger)aeld_AutoClearWeightAtDate:(NSDate *)date {
+    if (!date) {
+        return NSIntegerMax;
+    }
     NSInteger weight = 10000;
     //采用“使用次数”和“上次使用时间”的双重计算方案，使用次数越少，上次使用时间越远，则权重越大，越会被清理
     weight -= self.aeld_HitCount; //每个hitCount减少一个权重
-    NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:self.aeld_LastUseDate];
+    NSTimeInterval interval = [date timeIntervalSinceDate:self.aeld_LastUseDate];
     weight +=  interval;// / 60; //每过1分钟，增加一个权重
     return weight;
 }

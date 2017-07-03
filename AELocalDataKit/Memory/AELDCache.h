@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) NSInteger aeld_HitCount;  //使用次数，不会被清零，除非对象被移出缓存
 
-@property (nonatomic, copy, readonly) NSDate *aeld_LastUseDate; //上一次使用时间，不会被置为nil，除非对象被移出缓存
+@property (nonatomic, strong, readonly) NSDate *aeld_LastUseDate; //上一次从缓存中取出的时间，不会被置为nil，除非对象被移出缓存
 
 @property (nonatomic, copy) NSDate *__nullable aeld_ExpireDate; //失效时间，默认为nil，即长期有效。如果设置了失效时间并且到期了，内存缓存会在自动清理时，将其清除；磁盘缓存会在主动清理过期文件或者启动app时，将其清除
 
@@ -45,11 +45,19 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)aeld_ValidateCacheObject;
 
 /**
- 被自动清理的权重，权重越高，则越会被清理
+ 被自动清理的权重，权重越高，则越会被清理（在大数量循环时，建议使用aeld_AutoClearWeightAtDate:，否则会比较影响性能）
 
  @return 自动清理权重
  */
 - (NSInteger)aeld_AutoClearWeight;
+
+/**
+ 指定时间被自动清理的权重，权重越高，则越会被清理
+ 
+ @param date 指定的时间
+ @return 自动清理权重
+ */
+- (NSInteger)aeld_AutoClearWeightAtDate:(NSDate *)date;
 
 @end
 

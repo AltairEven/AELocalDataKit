@@ -146,7 +146,7 @@
 }
 
 - (void)clearExpired {
-    dispatch_barrier_sync(self.synchronizationQueue, ^{
+    dispatch_barrier_async(self.synchronizationQueue, ^{
         NSString *directoryPath = [self cacheDirectoryPath];
         NSDirectoryEnumerator *fileEnumerator = [self.fileManager enumeratorAtPath:directoryPath];
         for (NSString *fileName in fileEnumerator) {
