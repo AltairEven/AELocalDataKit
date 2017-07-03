@@ -55,7 +55,6 @@
         self.synchronizationQueue = dispatch_queue_create([queueName cStringUsingEncoding:NSASCIIStringEncoding], DISPATCH_QUEUE_CONCURRENT);
         [self initializeStorage];
         self.fileManager = [NSFileManager new];
-        [self clearExpired];
     }
     return self;
 }
@@ -142,10 +141,34 @@
 + (instancetype)diskCacheWithName:(NSString *)name {
     AELDDiskCache *cache = [[AELDDiskCache alloc] init];
     cache.cacheName = name;
+    [cache setAutoClear:YES];
     return cache;
 }
 
-- (void)clearExpired {
+#pragma mark Super methods
+
+- (BOOL)setObject:(id)obj forKey:(NSString *)key {
+    [obj setAeld_DiskCache_CacheKey:key];
+    if (![obj aeld_ValidateCacheObject] || ![obj conformsToProtocol:@protocol(NSCoding)]) {
+        //非法对象
+        return NO;
+    }
+    __block BOOL saved = NO;
+    dispatch_barrier_async(self.synchronizationQueue, ^{
+        saved = [self saveCacheObject:obj];
+    });
+    return saved;
+}
+
+- (void)setAutoClear:(BOOL)autoClear {
+    [super setAutoClear:autoClear];
+    if (autoClear) {
+        [self autoClearCacheSpace];
+    }
+}
+
+- (void)autoClearCacheSpace {
+    [super autoClearCacheSpace];
     dispatch_barrier_async(self.synchronizationQueue, ^{
         NSString *directoryPath = [self cacheDirectoryPath];
         NSDirectoryEnumerator *fileEnumerator = [self.fileManager enumeratorAtPath:directoryPath];
@@ -164,21 +187,6 @@
             }
         }
     });
-}
-
-#pragma mark Super methods
-
-- (BOOL)setObject:(id)obj forKey:(NSString *)key {
-    [obj setAeld_DiskCache_CacheKey:key];
-    if (![obj aeld_ValidateCacheObject] || ![obj conformsToProtocol:@protocol(NSCoding)]) {
-        //非法对象
-        return NO;
-    }
-    __block BOOL saved = NO;
-    dispatch_barrier_async(self.synchronizationQueue, ^{
-        saved = [self saveCacheObject:obj];
-    });
-    return saved;
 }
 
 - (id)objectForKey:(NSString *)key {

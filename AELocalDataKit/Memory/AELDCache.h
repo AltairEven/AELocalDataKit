@@ -68,11 +68,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *cacheName;    //Cache名称，可用作区分不同Cache
 
+@property (nonatomic, assign) BOOL autoClear;   //是否自动清理，默认为NO
+
 - (BOOL)setObject:(ObjectType)obj forKey:(NSString *)key;
 - (ObjectType)objectForKey:(NSString *)key;
 - (NSDictionary<NSString *, ObjectType> *)allCachedObjects;
 - (BOOL)removeObjectForKey:(NSString *)key;
 - (void)removeAllObjects;
+- (void)autoClearCacheSpace;
 
 @end
 

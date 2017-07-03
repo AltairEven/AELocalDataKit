@@ -23,8 +23,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) void(^__nullable WillEvictAction)(AELDMemoryCache *cache, id object); //即将释放缓存对象时的回调
 
+@property (nonatomic, copy) void(^__nullable CacheFullAlert)(AELDMemoryCache *cache); //缓存已满警告，只有在非自动清理时才可能被调用
+
 /**
- 便捷初始化方法
+ 便捷初始化方法，并默认设置了“自动清理”
 
  @param name 缓存名称
  @param action 即将释放缓存对象时的回调
@@ -33,9 +35,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)memoryCacheWithName:(NSString *)name willEvictAction:(nullable void(^)(AELDMemoryCache *cache, id object))action;
 
 /**
- *  清除不使用的缓存对象
+ *  清除不使用的缓存对象，如果设置了自动清理，则该方法每隔2秒钟会清理一次。
  */
-- (void)clearUnused;
+- (void)autoClearCacheSpace;
 
 @end
 

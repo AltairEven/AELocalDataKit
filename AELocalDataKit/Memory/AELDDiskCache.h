@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSUInteger currentDiskUsage;    //当前磁盘占用
 
 /**
- 便捷初始化方法
+ 便捷初始化方法，并默认设置了“自动清理”
  
  @param name 缓存名称
  @return 缓存实例
@@ -44,9 +44,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)setObject:(ObjectType<NSCoding>)obj forKey:(NSString *)key;
 
 /**
- *  清除过期的缓存对象，该方法在初始化后会自动调用
+ *  清除过期的缓存对象，如果设置了自动清理，则该方法在初始化后会自动调用
  */
-- (void)clearExpired;
+- (void)autoClearCacheSpace;
 
 @end
 

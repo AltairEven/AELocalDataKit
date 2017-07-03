@@ -51,6 +51,8 @@
 
 @property (nonatomic, strong) dispatch_queue_t synchronizationQueue;
 
+@property (nonatomic, strong) dispatch_source_t autoClearTimer;
+
 @end
 
 @implementation AELDMemoryCache
@@ -74,6 +76,35 @@
     [self willChangeValueForKey:@"currentUsage"];
     _currentUsage = currentUsage;
     [self didChangeValueForKey:@"currentUsage"];
+    if (currentUsage >= self.cacheBytesLimit && self.CacheFullAlert) {
+        __weak typeof(self) weakSelf = self;
+        weakSelf.CacheFullAlert(weakSelf);
+    }
+}
+
+- (void)startAutoClear {
+    if (!self.autoClearTimer) {
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        self.autoClearTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+        
+        dispatch_source_set_timer(self.autoClearTimer, DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC, 1 * NSEC_PER_SEC);
+        
+        __weak typeof(self) weakSelf = self;
+        dispatch_source_set_event_handler(self.autoClearTimer, ^{
+            [weakSelf autoClearCacheSpace];
+        });
+        dispatch_resume(self.autoClearTimer);
+    }
+}
+
+- (void)stopAutoClear {
+    if (self.autoClearTimer) {
+        if (!dispatch_source_testcancel(self.autoClearTimer)) {
+            //尚未取消，先关闭定时器
+            dispatch_source_cancel(self.autoClearTimer);
+        }
+        self.autoClearTimer = nil;
+    }
 }
 
 - (BOOL)reallyRemoveCacheObject:(id)object {
@@ -102,37 +133,54 @@
     AELDMemoryCache *cache = [[AELDMemoryCache alloc] init];
     cache.cacheName = name;
     cache.WillEvictAction = action;
+//    [cache setAutoClear:YES];
     return cache;
 }
 
-- (void)clearUnused {
+#pragma mark Super methods
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+    [self stopAutoClear];
+}
+
+- (void)setAutoClear:(BOOL)autoClear {
+    [super setAutoClear:autoClear];
+    if (autoClear) {
+        [self startAutoClear];
+    } else {
+        [self stopAutoClear];
+    }
+}
+
+- (void)autoClearCacheSpace {
+    [super autoClearCacheSpace];
     if ([self.cachePool count] == 0) {
         return;
     }
     dispatch_barrier_sync(self.synchronizationQueue, ^{
-        NSArray *totalCaches = [self.cachePool allValues];
+        NSDate *currentDate = [NSDate date];
         //先清理过期的
-        for (id cachedObj in totalCaches) {
-            NSDate *currentDate = [NSDate date];
-            NSDate *expireDate = [cachedObj aeld_ExpireDate];
+        [self.cachePool enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            NSDate *expireDate = [obj aeld_ExpireDate];
             if (expireDate && [currentDate timeIntervalSinceDate:expireDate] > 0) {
-                [self reallyRemoveCacheObject:cachedObj];
+                [self reallyRemoveCacheObject:obj];
             }
-        }
+        }];
         //还需要继续清理
         if (self.currentUsage > self.cacheBytesLimit) {
             //按照权重降序排列
-            NSArray *allCaches = [self.cachePool allValues];
-            allCaches = [allCaches sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-                NSNumber *clearWeight1 = [NSNumber numberWithInteger:[obj1 aeld_AutoClearWeight]];
-                NSNumber *clearWeight2 = [NSNumber numberWithInteger:[obj2 aeld_AutoClearWeight]];
+            NSArray *allKeys = [self.cachePool keysSortedByValueUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                NSNumber *clearWeight1 = [NSNumber numberWithInteger:[obj1 aeld_AutoClearWeightAtDate:currentDate]];
+                NSNumber *clearWeight2 = [NSNumber numberWithInteger:[obj2 aeld_AutoClearWeightAtDate:currentDate]];
                 NSComparisonResult result = [clearWeight1 compare:clearWeight2];
                 return result == NSOrderedAscending;
             }];
             //这个地方需要先按照策略排序，再for循环清理
             NSUInteger bytesToClear = self.currentUsage - self.autoClearExpectation;
             NSUInteger clearedBytes = 0;
-            for (id cachedObj in allCaches) {
+            for (NSString *key in allKeys) {
+                id cachedObj = [self.cachePool objectForKey:key];
                 [self reallyRemoveCacheObject:cachedObj];
                 clearedBytes += [cachedObj aeld_TotalBytes];
                 if (clearedBytes >= bytesToClear) {
@@ -143,27 +191,26 @@
     });
 }
 
-#pragma mark Super methods
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
-}
-
 - (BOOL)setObject:(id)obj forKey:(NSString *)key {
     [obj setAeld_MemoryCache_CacheKey:key];
     if (![obj aeld_ValidateCacheObject]) {
         //非法对象
         return NO;
     }
+    __weak typeof(self) weakSelf = self;
     dispatch_barrier_async(self.synchronizationQueue, ^{
-        //先存入
-        [self.cachePool setObject:obj forKey:key];
-        [obj setAeld_MemoryCache_LastUseDate:[NSDate date]];
-        self.currentUsage += [obj aeld_TotalBytes];
+        if (!weakSelf.autoClear && weakSelf.currentUsage >= weakSelf.cacheBytesLimit) {
+            //非自动清理，并且已经装满
+            if (weakSelf.CacheFullAlert) {
+                weakSelf.CacheFullAlert(weakSelf);
+            }
+        } else {
+            [self.cachePool setObject:obj forKey:key];
+            [obj setAeld_MemoryCache_LastUseDate:[NSDate date]];
+            self.currentUsage += [obj aeld_TotalBytes];
+        }
     });
-    
-    //再清理
-    [self clearUnused];
+
     return YES;
 }
 

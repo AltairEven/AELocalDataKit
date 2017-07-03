@@ -145,6 +145,10 @@
 
 @implementation AELDCache
 
+- (void)autoClearCacheSpace {
+    
+}
+
 - (BOOL)setObject:(id)obj forKey:(NSString *)key {
     [self doesNotRecognizeSelector:_cmd];
     return NO;
