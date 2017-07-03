@@ -46,7 +46,7 @@
 }
 
 - (void)setAeld_MemoryCache_LastGetDate:(NSDate * _Nullable)aeld_LastGetDate {
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_LastGetDate", aeld_LastGetDate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_LastGetDate", aeld_LastGetDate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (NSInteger)aeld_AutoClearWeight {
@@ -61,7 +61,7 @@
     NSInteger weight = 10000;
     //采用“使用次数”和“上次使用时间”的双重计算方案，使用次数越少，上次使用时间越远，则权重越大，越会被清理
     weight -= self.aeld_Memory_HitCount; //每个hitCount减少一个权重
-    NSTimeInterval interval = [date timeIntervalSinceDate:self.aeld_Memory_LastGetDate];
+    NSTimeInterval interval = [date timeIntervalSinceDate:self.aeld_LastGetDate];
     weight +=  interval;// / 60; //每过1分钟，增加一个权重
     return weight;
 }

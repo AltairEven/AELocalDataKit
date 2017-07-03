@@ -24,6 +24,10 @@
     objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_CacheKey", aeld_CacheKey, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
+- (void)setAeld_MemoryCache_LastGetDate:(NSDate * _Nullable)aeld_LastGetDate {
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_LastGetDate", aeld_LastGetDate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 @end
 
 @interface AELDDiskCache ()
@@ -132,6 +136,7 @@
     if (object) {
         NSDictionary *xattr = [AELDTools expendAttributesForPath:filePath];
         [object setAeld_DiskFileXAttr:xattr];
+        [object setAeld_MemoryCache_LastGetDate:[NSDate date]];
     }
     return object;
 }

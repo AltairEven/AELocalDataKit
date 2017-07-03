@@ -58,6 +58,14 @@
     return objc_getAssociatedObject(self, @"AELocalDataKit_CacheObject_UserInfo");
 }
 
+- (void)setAeld_LastGetDate:(NSDate * _Nonnull)aeld_LastGetDate {
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_LastGetDate", aeld_LastGetDate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSDate *)aeld_LastGetDate {
+    return objc_getAssociatedObject(self, @"AELocalDataKit_CacheObject_LastGetDate");
+}
+
 - (void)setAeld_Memory_HitCount:(NSInteger)aeld_Memory_HitCount {
     NSNumber *count = [NSNumber numberWithInteger:aeld_Memory_HitCount];
     objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_HitCount", count, OBJC_ASSOCIATION_ASSIGN);
@@ -66,14 +74,6 @@
 - (NSInteger)aeld_Memory_HitCount {
     NSNumber *count = objc_getAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_HitCount");
     return [count integerValue];
-}
-
-- (void)setAeld_Memory_LastGetDate:(NSDate * _Nonnull)aeld_Memory_LastGetDate {
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_LastGetDate", aeld_Memory_LastGetDate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (NSDate *)aeld_LastUseDate {
-    return objc_getAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_LastGetDate");
 }
 
 #pragma mark NSObject - Public methods

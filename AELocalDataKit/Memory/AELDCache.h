@@ -33,9 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSDictionary *__nullable aeld_UserInfo;  //用户自定义属性。注：对于需要存储到磁盘的缓存对象，需要将该属性encode，否则将丢失。
 
-@property (nonatomic, readonly) NSInteger aeld_Memory_HitCount;  //从内存缓存中取出的次数，不会被清零，除非对象被移出缓存
+@property (nonatomic, strong, readonly) NSDate *aeld_LastGetDate; //上一次从缓存中取出的时间，不会被置为nil，除非对象被移出缓存
 
-@property (nonatomic, strong, readonly) NSDate *aeld_Memory_LastGetDate; //上一次从缓存中取出的时间，不会被置为nil，除非对象被移出缓存
+@property (nonatomic, readonly) NSInteger aeld_Memory_HitCount;  //从内存缓存中取出的次数，不会被清零，除非对象被移出缓存
 
 /**
  判断是否是合法的缓存对象
