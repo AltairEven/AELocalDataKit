@@ -12,6 +12,8 @@
 
 @interface NSObject (AELDCacheObject_MemoryCache)
 
+- (void)setAeld_MemoryCache_CacheKey:(NSString *)aeld_CacheKey;
+
 - (void)addAeld_MemoryCache_HitCount;
 
 - (void)clearAeld_MemoryCache_HitCount;
@@ -21,6 +23,10 @@
 @end
 
 @implementation NSObject (AELDCacheObject_MemoryCache)
+
+- (void)setAeld_MemoryCache_CacheKey:(NSString *)aeld_CacheKey {
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_CacheKey", aeld_CacheKey, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
 
 - (void)addAeld_MemoryCache_HitCount {
     NSNumber *count = [NSNumber numberWithInteger:self.aeld_HitCount + 1];
@@ -71,7 +77,7 @@
 }
 
 - (BOOL)reallyRemoveCacheObject:(id)object {
-    if (!object || [[object aeld_CacheIdentifier] length] == 0) {
+    if (!object || [[object aeld_CacheKey] length] == 0) {
         return NO;
     }
     __weak typeof(self) weakSelf = self;
@@ -80,7 +86,7 @@
         weakSelf.WillEvictAction(weakSelf, object);
     }
     //移除缓存对象
-    [self.cachePool removeObjectForKey:[object aeld_CacheIdentifier]];
+    [self.cachePool removeObjectForKey:[object aeld_CacheKey]];
     //将对象相关属性置空
     [object clearAeld_MemoryCache_HitCount];
     [object setAeld_MemoryCache_LastUseDate:nil];
@@ -103,13 +109,13 @@
     if ([self.cachePool count] == 0) {
         return;
     }
-    dispatch_barrier_async(self.synchronizationQueue, ^{
+    dispatch_barrier_sync(self.synchronizationQueue, ^{
         NSArray *totalCaches = [self.cachePool allValues];
         //先清理过期的
         for (id cachedObj in totalCaches) {
             NSDate *currentDate = [NSDate date];
             NSDate *expireDate = [cachedObj aeld_ExpireDate];
-            if ([currentDate timeIntervalSinceDate:expireDate] > 0) {
+            if (expireDate && [currentDate timeIntervalSinceDate:expireDate] > 0) {
                 [self reallyRemoveCacheObject:cachedObj];
             }
         }
@@ -143,14 +149,15 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
 }
 
-- (BOOL)addObject:(id)obj{
+- (BOOL)setObject:(id)obj forKey:(NSString *)key {
+    [obj setAeld_MemoryCache_CacheKey:key];
     if (![obj aeld_ValidateCacheObject]) {
         //非法对象
         return NO;
     }
     dispatch_barrier_async(self.synchronizationQueue, ^{
         //先存入
-        [self.cachePool setObject:obj forKey:[obj aeld_CacheIdentifier]];
+        [self.cachePool setObject:obj forKey:key];
         [obj setAeld_MemoryCache_LastUseDate:[NSDate date]];
         self.currentUsage += [obj aeld_TotalBytes];
     });
@@ -160,13 +167,13 @@
     return YES;
 }
 
-- (id)objectWithCacheIdentifier:(NSString *)identifier {
-    if (![identifier isKindOfClass:[NSString class]] || [identifier length] == 0) {
+- (id)objectForKey:(NSString *)key {
+    if (![key isKindOfClass:[NSString class]] || [key length] == 0) {
         return nil;
     }
     __block id object = nil;
     dispatch_sync(self.synchronizationQueue, ^{
-        object = [self.cachePool objectForKey:identifier];
+        object = [self.cachePool objectForKey:key];
         [object addAeld_MemoryCache_HitCount];
         [object setAeld_MemoryCache_LastUseDate:[NSDate date]];
     });
@@ -182,13 +189,13 @@
     return objects;
 }
 
-- (BOOL)removeObjectWithCacheIdentifier:(NSString *)identifier {
-    if (![identifier isKindOfClass:[NSString class]] || [identifier length] == 0) {
+- (BOOL)removeObjectForKey:(NSString *)key {
+    if (![key isKindOfClass:[NSString class]] || [key length] == 0) {
         return NO;
     }
     __block BOOL removed = NO;
     dispatch_barrier_sync(self.synchronizationQueue, ^{
-        id object = [self.cachePool objectForKey:identifier];
+        id object = [self.cachePool objectForKey:key];
         if (object) {
             removed = [self reallyRemoveCacheObject:object];
         }

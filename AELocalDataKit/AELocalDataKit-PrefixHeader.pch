@@ -17,6 +17,7 @@
 
 #import <objc/runtime.h>
 
+#import "AELDTools.h"
 #import "AELDOperationMode.h"
 #import "AELDPlugMode.h"
 #import "AELDResponse.h"

@@ -10,6 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ 内存缓存
+ */
 @interface AELDMemoryCache : AELDCache
 
 @property (nonatomic, readonly) NSUInteger currentUsage;    //当前内存占用
@@ -18,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSUInteger autoClearExpectation;  //自动释放后，预期保留的内存占用
 
-@property (nonatomic, copy) void(^ WillEvictAction)(AELDMemoryCache *cache, id object); //即将释放缓存对象时的回调
+@property (nonatomic, copy) void(^__nullable WillEvictAction)(AELDMemoryCache *cache, id object); //即将释放缓存对象时的回调
 
 /**
  便捷初始化方法

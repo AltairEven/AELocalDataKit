@@ -14,17 +14,17 @@
 
 #pragma mark NSObject-Properties
 
-- (void)setAeld_CacheIdentifier:(NSString *)aeld_CacheIdentifier {
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_CacheIdentifier", aeld_CacheIdentifier, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setAeld_CacheKey:(NSString *)aeld_CacheKey {
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_CacheKey", aeld_CacheKey, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (NSString *)aeld_CacheIdentifier {
-    return objc_getAssociatedObject(self, @"AELocalDataKit_CacheObject_CacheIdentifier");
+- (NSString *)aeld_CacheKey {
+    return objc_getAssociatedObject(self, @"AELocalDataKit_CacheObject_CacheKey");
 }
 
 - (void)setAeld_MimeType:(AELDCacheObjectType)aeld_MimeType {
     NSNumber *type = [NSNumber numberWithInteger:aeld_MimeType];
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_MimeType", type, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_MimeType", type, OBJC_ASSOCIATION_ASSIGN);
 }
 
 - (AELDCacheObjectType)aeld_MimeType {
@@ -34,7 +34,7 @@
 
 - (void)setAeld_TotalBytes:(NSUInteger)aeld_TotalBytes {
     NSNumber *totalBytes = [NSNumber numberWithInteger:aeld_TotalBytes];
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_TotalBytes", totalBytes, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_TotalBytes", totalBytes, OBJC_ASSOCIATION_ASSIGN);
 }
 
 - (NSUInteger)aeld_TotalBytes {
@@ -44,7 +44,7 @@
 
 - (void)setAeld_HitCount:(NSInteger)aeld_HitCount {
     NSNumber *count = [NSNumber numberWithInteger:aeld_HitCount];
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_HitCount", count, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_HitCount", count, OBJC_ASSOCIATION_ASSIGN);
 }
 
 - (NSInteger)aeld_HitCount {
@@ -53,7 +53,7 @@
 }
 
 - (void)setAeld_LastUseDate:(NSDate *)aeld_LastUseDate {
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_LastUseDate", aeld_LastUseDate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_LastUseDate", aeld_LastUseDate, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (NSDate *)aeld_LastUseDate {
@@ -61,20 +61,28 @@
 }
 
 - (void)setAeld_ExpireDate:(NSDate *)aeld_ExpireDate {
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_ExpireDate", aeld_ExpireDate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_ExpireDate", aeld_ExpireDate, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (NSDate *)aeld_ExpireDate {
     return objc_getAssociatedObject(self, @"AELocalDataKit_CacheObject_ExpireDate");
 }
 
+- (void)setAeld_UserInfo:(NSDictionary *)aeld_UserInfo {
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_UserInfo", aeld_UserInfo, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (NSDictionary *)aeld_UserInfo {
+    return objc_getAssociatedObject(self, @"AELocalDataKit_CacheObject_UserInfo");
+}
+
 #pragma mark NSObject - Public methods
 
 - (BOOL)aeld_ValidateCacheObject {
-    if ([self.aeld_CacheIdentifier length] == 0) {
+    if (![self.aeld_CacheKey isKindOfClass:[NSString class]] || [self.aeld_CacheKey length] == 0) {
         return NO;
     }
-    //设置缓存对象类型和默认内存占用大小
+    //设置缓存对象“类型”和“默认内存占用大小”
     NSUInteger defaultTotalBytes = 0;
     if ([self isKindOfClass:[NSString class]]) {
         [self setAeld_MimeType:AELDCacheObjectTypeNSString];
@@ -94,6 +102,13 @@
         defaultTotalBytes = (UInt64)bytesPerPixel * (UInt64)bytesPerSize;
     } else {
         [self setAeld_MimeType:AELDCacheObjectTypeOther];
+        
+        if ([self conformsToProtocol:@protocol(NSCoding)]) {
+            //如果是遵循NSCoding协议的自定义对象，可以先转成NSData，再计算大致的内存占用
+            NSData *encodeData = [NSKeyedArchiver archivedDataWithRootObject:self];
+            
+            defaultTotalBytes = [encodeData length];
+        }
     }
     if (self.aeld_TotalBytes > 0) {
         //说明已经人为设置过大小，无需再重新计算
@@ -122,12 +137,12 @@
 
 @implementation AELDCache
 
-- (BOOL)addObject:(id)obj {
+- (BOOL)setObject:(id)obj forKey:(NSString *)key {
     [self doesNotRecognizeSelector:_cmd];
     return NO;
 }
 
-- (id)objectWithCacheIdentifier:(NSString *)identifier {
+- (id)objectForKey:(NSString *)key {
     [self doesNotRecognizeSelector:_cmd];
     return nil;
 }
@@ -137,7 +152,7 @@
     return nil;
 }
 
-- (BOOL)removeObjectWithCacheIdentifier:(NSString *)identifier {
+- (BOOL)removeObjectForKey:(NSString *)key {
     [self doesNotRecognizeSelector:_cmd];
     return NO;
 }

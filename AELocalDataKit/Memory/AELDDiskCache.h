@@ -10,6 +10,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ 对NSObject的磁盘缓存扩展
+ */
+@interface NSObject (AELDDiskCacheObject)
+
+@property (nonatomic, copy) NSDictionary<NSString *, NSString *> *__nullable aeld_DiskFileXAttr;  //缓存对象在磁盘存储时的附加文件属性。注：目前只支持key和value都是NSString类型
+
+@end
+
+/**
+ 磁盘缓存
+ */
 @interface AELDDiskCache<__covariant ObjectType> : AELDCache
 
 @property (nonatomic, readonly) NSUInteger currentDiskUsage;    //当前磁盘占用
@@ -20,15 +32,21 @@ NS_ASSUME_NONNULL_BEGIN
  @param name 缓存名称
  @return 缓存实例
  */
-+ (instancetype)memoryCacheWithName:(NSString *)name;
++ (instancetype)diskCacheWithName:(NSString *)name;
 
 /**
  加入磁盘缓存
 
  @param obj 缓存对象，需要遵循NSCoding协议
+ @param key 缓存对象的key
  @return 缓存成功或者失败
  */
-- (BOOL)addObject:(ObjectType<NSCoding>)obj;
+- (BOOL)setObject:(ObjectType<NSCoding>)obj forKey:(NSString *)key;
+
+/**
+ *  清除过期的缓存对象，该方法在初始化后会自动调用
+ */
+- (void)clearExpired;
 
 @end
 

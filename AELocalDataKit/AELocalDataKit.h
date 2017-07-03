@@ -26,3 +26,4 @@ FOUNDATION_EXPORT const unsigned char AELocalDataKitVersionString[];
 //Cache
 #import "AELDCache.h"
 #import "AELDMemoryCache.h"
+#import "AELDDiskCache.h"
