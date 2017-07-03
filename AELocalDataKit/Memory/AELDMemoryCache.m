@@ -12,13 +12,20 @@
 
 @interface NSObject (AELDCacheObject_MemoryCache)
 
-- (void)setAeld_MemoryCache_CacheKey:(NSString *)aeld_CacheKey;
+/**
+ 被自动清理的权重，权重越高，则越会被清理（在大数量循环时，建议使用aeld_AutoClearWeightAtDate:，否则会比较影响性能）
+ 
+ @return 自动清理权重
+ */
+- (NSInteger)aeld_AutoClearWeight;
 
-- (void)addAeld_MemoryCache_HitCount;
-
-- (void)clearAeld_MemoryCache_HitCount;
-
-- (void)setAeld_MemoryCache_LastUseDate:( NSDate * _Nullable)aeld_LastUseDate;
+/**
+ 指定时间被自动清理的权重，权重越高，则越会被清理
+ 
+ @param date 指定的时间
+ @return 自动清理权重
+ */
+- (NSInteger)aeld_AutoClearWeightAtDate:(NSDate *)date;
 
 @end
 
@@ -29,17 +36,34 @@
 }
 
 - (void)addAeld_MemoryCache_HitCount {
-    NSNumber *count = [NSNumber numberWithInteger:self.aeld_HitCount + 1];
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_HitCount", count, OBJC_ASSOCIATION_ASSIGN);
+    NSNumber *count = [NSNumber numberWithInteger:self.aeld_Memory_HitCount + 1];
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_HitCount", count, OBJC_ASSOCIATION_ASSIGN);
 }
 
 - (void)clearAeld_MemoryCache_HitCount {
     NSNumber *count = [NSNumber numberWithInteger:0];
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_HitCount", count, OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_HitCount", count, OBJC_ASSOCIATION_ASSIGN);
 }
 
-- (void)setAeld_MemoryCache_LastUseDate:(NSDate * _Nullable)aeld_LastUseDate {
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_LastUseDate", aeld_LastUseDate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setAeld_MemoryCache_LastGetDate:(NSDate * _Nullable)aeld_LastGetDate {
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_LastGetDate", aeld_LastGetDate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSInteger)aeld_AutoClearWeight {
+    //在大数量循环时，会比较影响性能
+    return [self aeld_AutoClearWeightAtDate:[NSDate date]];
+}
+
+- (NSInteger)aeld_AutoClearWeightAtDate:(NSDate *)date {
+    if (!date) {
+        return NSIntegerMax;
+    }
+    NSInteger weight = 10000;
+    //采用“使用次数”和“上次使用时间”的双重计算方案，使用次数越少，上次使用时间越远，则权重越大，越会被清理
+    weight -= self.aeld_Memory_HitCount; //每个hitCount减少一个权重
+    NSTimeInterval interval = [date timeIntervalSinceDate:self.aeld_Memory_LastGetDate];
+    weight +=  interval;// / 60; //每过1分钟，增加一个权重
+    return weight;
 }
 
 @end
@@ -120,7 +144,7 @@
     [self.cachePool removeObjectForKey:[object aeld_CacheKey]];
     //将对象相关属性置空
     [object clearAeld_MemoryCache_HitCount];
-    [object setAeld_MemoryCache_LastUseDate:nil];
+    [object setAeld_MemoryCache_LastGetDate:nil];
     //重新计算当前缓存消耗
     self.currentUsage -= [object aeld_TotalBytes];
     
@@ -133,7 +157,7 @@
     AELDMemoryCache *cache = [[AELDMemoryCache alloc] init];
     cache.cacheName = name;
     cache.WillEvictAction = action;
-//    [cache setAutoClear:YES];
+    [cache setAutoClear:YES];
     return cache;
 }
 
@@ -160,13 +184,14 @@
     }
     dispatch_barrier_sync(self.synchronizationQueue, ^{
         NSDate *currentDate = [NSDate date];
+        NSArray *allValues = [self.cachePool allValues];
         //先清理过期的
-        [self.cachePool enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        for (id obj in allValues) {
             NSDate *expireDate = [obj aeld_ExpireDate];
             if (expireDate && [currentDate timeIntervalSinceDate:expireDate] > 0) {
                 [self reallyRemoveCacheObject:obj];
             }
-        }];
+        }
         //还需要继续清理
         if (self.currentUsage > self.cacheBytesLimit) {
             //按照权重降序排列
@@ -206,7 +231,7 @@
             }
         } else {
             [self.cachePool setObject:obj forKey:key];
-            [obj setAeld_MemoryCache_LastUseDate:[NSDate date]];
+            [obj setAeld_MemoryCache_LastGetDate:[NSDate date]];
             self.currentUsage += [obj aeld_TotalBytes];
         }
     });
@@ -222,7 +247,7 @@
     dispatch_sync(self.synchronizationQueue, ^{
         object = [self.cachePool objectForKey:key];
         [object addAeld_MemoryCache_HitCount];
-        [object setAeld_MemoryCache_LastUseDate:[NSDate date]];
+        [object setAeld_MemoryCache_LastGetDate:[NSDate date]];
     });
     return object;
 }

@@ -42,24 +42,6 @@
     return [totalBytes unsignedIntegerValue];
 }
 
-- (void)setAeld_HitCount:(NSInteger)aeld_HitCount {
-    NSNumber *count = [NSNumber numberWithInteger:aeld_HitCount];
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_HitCount", count, OBJC_ASSOCIATION_ASSIGN);
-}
-
-- (NSInteger)aeld_HitCount {
-    NSNumber *count = objc_getAssociatedObject(self, @"AELocalDataKit_CacheObject_HitCount");
-    return [count integerValue];
-}
-
-- (void)setAeld_LastUseDate:(NSDate *)aeld_LastUseDate {
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_LastUseDate", aeld_LastUseDate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (NSDate *)aeld_LastUseDate {
-    return objc_getAssociatedObject(self, @"AELocalDataKit_CacheObject_LastUseDate");
-}
-
 - (void)setAeld_ExpireDate:(NSDate *)aeld_ExpireDate {
     objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_ExpireDate", aeld_ExpireDate, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
@@ -74,6 +56,24 @@
 
 - (NSDictionary *)aeld_UserInfo {
     return objc_getAssociatedObject(self, @"AELocalDataKit_CacheObject_UserInfo");
+}
+
+- (void)setAeld_Memory_HitCount:(NSInteger)aeld_Memory_HitCount {
+    NSNumber *count = [NSNumber numberWithInteger:aeld_Memory_HitCount];
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_HitCount", count, OBJC_ASSOCIATION_ASSIGN);
+}
+
+- (NSInteger)aeld_Memory_HitCount {
+    NSNumber *count = objc_getAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_HitCount");
+    return [count integerValue];
+}
+
+- (void)setAeld_Memory_LastGetDate:(NSDate * _Nonnull)aeld_Memory_LastGetDate {
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_LastGetDate", aeld_Memory_LastGetDate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSDate *)aeld_LastUseDate {
+    return objc_getAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_LastGetDate");
 }
 
 #pragma mark NSObject - Public methods
@@ -122,23 +122,6 @@
         return NO;
     }
     return YES;
-}
-
-- (NSInteger)aeld_AutoClearWeight {
-    //在大数量循环时，会比较影响性能
-    return [self aeld_AutoClearWeightAtDate:[NSDate date]];
-}
-
-- (NSInteger)aeld_AutoClearWeightAtDate:(NSDate *)date {
-    if (!date) {
-        return NSIntegerMax;
-    }
-    NSInteger weight = 10000;
-    //采用“使用次数”和“上次使用时间”的双重计算方案，使用次数越少，上次使用时间越远，则权重越大，越会被清理
-    weight -= self.aeld_HitCount; //每个hitCount减少一个权重
-    NSTimeInterval interval = [date timeIntervalSinceDate:self.aeld_LastUseDate];
-    weight +=  interval;// / 60; //每过1分钟，增加一个权重
-    return weight;
 }
 
 @end
