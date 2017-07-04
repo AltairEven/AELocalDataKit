@@ -10,26 +10,17 @@
 #import <UIKit/UIKit.h>
 
 
-@interface NSObject (AELDCacheObject_MemoryCache)
-
-/**
- 被自动清理的权重，权重越高，则越会被清理（在大数量循环时，建议使用aeld_AutoClearWeightAtDate:，否则会比较影响性能）
- 
- @return 自动清理权重
- */
-- (NSInteger)aeld_AutoClearWeight;
-
-/**
- 指定时间被自动清理的权重，权重越高，则越会被清理
- 
- @param date 指定的时间
- @return 自动清理权重
- */
-- (NSInteger)aeld_AutoClearWeightAtDate:(NSDate *)date;
-
-@end
-
 @implementation NSObject (AELDCacheObject_MemoryCache)
+
+- (void)setAeld_Memory_HitCount:(NSInteger)aeld_Memory_HitCount {
+    NSNumber *count = [NSNumber numberWithInteger:aeld_Memory_HitCount];
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_HitCount", count, OBJC_ASSOCIATION_ASSIGN);
+}
+
+- (NSInteger)aeld_Memory_HitCount {
+    NSNumber *count = objc_getAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_HitCount");
+    return [count integerValue];
+}
 
 - (void)setAeld_MemoryCache_CacheKey:(NSString *)aeld_CacheKey {
     objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_CacheKey", aeld_CacheKey, OBJC_ASSOCIATION_COPY_NONATOMIC);
@@ -178,7 +169,6 @@
 }
 
 - (void)autoClearCacheSpace {
-    [super autoClearCacheSpace];
     if ([self.cachePool count] == 0) {
         return;
     }

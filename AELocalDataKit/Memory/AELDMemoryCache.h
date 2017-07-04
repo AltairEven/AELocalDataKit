@@ -10,6 +10,27 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@interface NSObject (AELDCacheObject_MemoryCache)
+
+@property (nonatomic, readonly) NSInteger aeld_Memory_HitCount;  //从内存缓存中取出的次数，不会被清零，除非对象被移出缓存
+
+/**
+ 被自动清理的权重，权重越高，则越会被清理（在大数量循环时，建议使用aeld_AutoClearWeightAtDate:，否则会比较影响性能）
+ 
+ @return 自动清理权重
+ */
+- (NSInteger)aeld_AutoClearWeight;
+
+/**
+ 指定时间被自动清理的权重，权重越高，则越会被清理
+ 
+ @param date 指定的时间，当为nil时，权重最高
+ @return 自动清理权重
+ */
+- (NSInteger)aeld_AutoClearWeightAtDate:(NSDate *__nullable)date;
+
+@end
+
 /**
  内存缓存
  */

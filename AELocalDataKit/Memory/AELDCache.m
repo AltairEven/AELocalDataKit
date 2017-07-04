@@ -66,16 +66,6 @@
     return objc_getAssociatedObject(self, @"AELocalDataKit_CacheObject_LastGetDate");
 }
 
-- (void)setAeld_Memory_HitCount:(NSInteger)aeld_Memory_HitCount {
-    NSNumber *count = [NSNumber numberWithInteger:aeld_Memory_HitCount];
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_HitCount", count, OBJC_ASSOCIATION_ASSIGN);
-}
-
-- (NSInteger)aeld_Memory_HitCount {
-    NSNumber *count = objc_getAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_HitCount");
-    return [count integerValue];
-}
-
 #pragma mark NSObject - Public methods
 
 - (BOOL)aeld_ValidateCacheObject {
@@ -129,7 +119,7 @@
 @implementation AELDCache
 
 - (void)autoClearCacheSpace {
-    
+    [self doesNotRecognizeSelector:_cmd];
 }
 
 - (BOOL)setObject:(id)obj forKey:(NSString *)key {

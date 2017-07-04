@@ -173,7 +173,6 @@
 }
 
 - (void)autoClearCacheSpace {
-    [super autoClearCacheSpace];
     dispatch_barrier_async(self.synchronizationQueue, ^{
         NSString *directoryPath = [self cacheDirectoryPath];
         NSDirectoryEnumerator *fileEnumerator = [self.fileManager enumeratorAtPath:directoryPath];
