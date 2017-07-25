@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'AELocalDataKit_Example' do
+  pod 'AELocalDataKit', :path => '../'
+
+  target 'AELocalDataKit_Tests' do
+    inherit! :search_paths
+
+    pod 'FBSnapshotTestCase'
+  end
+end
