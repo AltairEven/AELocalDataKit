@@ -90,7 +90,7 @@
         CGSize imageSize = CGSizeMake(weakSelf.size.width * weakSelf.scale, weakSelf.size.height * weakSelf.scale);
         CGFloat bytesPerPixel = 4.0;
         CGFloat bytesPerSize = imageSize.width * imageSize.height;
-        defaultTotalBytes = (UInt64)bytesPerPixel * (UInt64)bytesPerSize;
+        defaultTotalBytes = (NSUInteger)bytesPerPixel * (NSUInteger)bytesPerSize;
     } else {
         [self setAeld_MimeType:AELDCacheObjectTypeOther];
         
