@@ -11,14 +11,16 @@
 #endif
 
 #import "AELocalDataKit.h"
-#import "AELDOperationMode.h"
-#import "AELDPlugMode.h"
-#import "AELDResponse.h"
+#import "AELDDiskCachePlug.h"
+#import "AELDMemoryCachePlug.h"
 #import "AELDCache.h"
 #import "AELDDiskCache.h"
 #import "AELDMemoryCache.h"
-#import "AELDTools.h"
+#import "AELDOperationMode.h"
+#import "AELDPlugMode.h"
+#import "AELDResponse.h"
 #import "AELocalDataSocket.h"
+#import "AELDTools.h"
 
 FOUNDATION_EXPORT double AELocalDataKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char AELocalDataKitVersionString[];

@@ -38,5 +38,5 @@ This is a long description of the pod here. This SDK is for local data request.
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  s.dependency 'AEDataKit'
+  #s.dependency 'AEDataKit'
 end

@@ -11,13 +11,16 @@
 
 @implementation AELDResponse
 
-- (instancetype)initWithOriginalMode:(AELDOperationMode *)originalMode {
+- (instancetype)initWithOriginalMode:(AELDOperationMode *)originalMode responseData:(id _Nullable)data userInfo:(NSDictionary * _Nullable)userInfo error:(NSError * _Nullable)error {
     if (![originalMode isKindOfClass:[AELDOperationMode class]]) {
         return nil;
     }
     self = [self init];
     if (self) {
         _originalMode = originalMode;
+        _responseData = data;
+        _userInfo = userInfo;
+        _error = error;
     }
     return self;
 }

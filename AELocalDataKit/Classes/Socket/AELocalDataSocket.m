@@ -9,6 +9,8 @@
 #import "AELocalDataSocket.h"
 #import "AELDPlugMode.h"
 #import "AELDResponse.h"
+#import "AELDMemoryCachePlug.h"
+#import "AELDDiskCachePlug.h"
 
 @implementation AELocalDataSocket
 
@@ -24,22 +26,12 @@
 - (void)plugInBuiltInPlugs:(AELDBuiltInPlugStrategy)strategy {
     _builtInPlugStrategy = strategy;
     
-//    if ((strategy & ALSUABuiltInPlugStrategyAutoLogin) == ALSUABuiltInPlugStrategyAutoLogin) {
-//        [[ALSUASocket publicSocket] plugIn:[[ALSUAAutoLoginPlug alloc] init]];
-//    }
-//    if ((strategy & ALSUABuiltInPlugStrategyBindMobile) == ALSUABuiltInPlugStrategyBindMobile) {
-//        [[ALSUASocket publicSocket] plugIn:[[ALSUABindMobilePhonePlug alloc] init]];
-//    }
-//    if ((strategy & ALSUABuiltInPlugStrategySetPassword) == ALSUABuiltInPlugStrategySetPassword) {
-//        [[ALSUASocket publicSocket] plugIn:[[ALSUASetPasswordPlug alloc] init]];
-//    }
-//    if ((strategy & ALSUABuiltInPlugStrategyBaichuanLogin) == ALSUABuiltInPlugStrategyBaichuanLogin) {
-//#ifdef ALSUABC_2
-//        [[ALSUASocket publicSocket] plugIn:[[ALSUASecondPartyBaiChuanPlug alloc] init]];
-//#else
-//        [[ALSUASocket publicSocket] plugIn:[[ALSUAThirdPartyBaiChuanPlug alloc] init]];
-//#endif
-//    }
+    if ((strategy & AELDBuiltInPlugStrategyMemoryCache) == AELDBuiltInPlugStrategyMemoryCache) {
+        [[AELocalDataSocket publicSocket] plugIn:[[AELDMemoryCachePlug alloc] init]];
+    }
+    if ((strategy & AELDBuiltInPlugStrategyDiskFileCache) == AELDBuiltInPlugStrategyDiskFileCache) {
+        [[AELocalDataSocket publicSocket] plugIn:[[AELDDiskCachePlug alloc] init]];
+    }
 }
 
 - (void)plugIn:(id<AELocalDataPlugProtocal>)plug {

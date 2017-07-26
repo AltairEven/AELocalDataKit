@@ -18,9 +18,6 @@
     if (![name isKindOfClass:[NSString class]] || [name length] == 0) {
         return nil;
     }
-    if ((AELDOperationTypeAll & type) != type) {
-        return nil;
-    }
     self = [super init];
     if (self) {
         _name = name;

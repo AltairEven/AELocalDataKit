@@ -12,12 +12,14 @@ typedef enum {
     AELDBuiltInPlugStrategyMemoryCache      = 1 << 0,
     AELDBuiltInPlugStrategyDiskFileCache    = 1 << 1,
     AELDBuiltInPlugStrategySQL              = 1 << 2,
-    ALSUABuiltInPlugStrategyAll             = (1 << 3) - 1
 }AELDBuiltInPlugStrategy;
 
 @class AELDPlugMode;
 @class AELDOperationMode;
 @class AELDResponse;
+
+
+NS_ASSUME_NONNULL_BEGIN
 
 /**
  本地数据操作插件需要遵循的协议
@@ -37,11 +39,12 @@ typedef enum {
  开始数据操作
  
  @param mode 数据操作请求
- @param delegate 数据操作请求的代理
+ @param key 数据操作的对象key
+ @param value 数据操作的对象value
  @param response 数据操作返回
  @return 是否开始操作成功，非操作结果
  */
-- (BOOL)startAccountOperation:(AELDOperationMode *)mode withDelegate:(id)delegate response:(void(^)(AELDResponse *response))response;
+- (BOOL)startOperation:(AELDOperationMode *)mode forKey:(NSString * __nullable)key value:(id __nullable)value response:(void(^)(AELDResponse *response))response;
 
 /**
  停止数据操作
@@ -51,6 +54,7 @@ typedef enum {
 - (BOOL)stopOperation;
 
 @end
+
 
 /**
  本地数据操作插座
@@ -95,7 +99,7 @@ typedef enum {
  @param mode 数据操作模式
  @return 对应数据操作模式的已插入插件
  */
-- (id<AELocalDataPlugProtocal>)plugWithMode:(AELDPlugMode *)mode;
+- (id<AELocalDataPlugProtocal> __nullable)plugWithMode:(AELDPlugMode *)mode;
 
 /**
  获取包含对应数据操作模式的已插入插件
@@ -103,6 +107,9 @@ typedef enum {
  @param mode 数据操作模式
  @return 对应数据操作模式的已插入插件
  */
-- (id<AELocalDataPlugProtocal>)plugSupportedOperationWithMode:(AELDOperationMode *)mode;
+- (id<AELocalDataPlugProtocal> __nullable)plugSupportedOperationWithMode:(AELDOperationMode *)mode;
 
 @end
+
+
+NS_ASSUME_NONNULL_END

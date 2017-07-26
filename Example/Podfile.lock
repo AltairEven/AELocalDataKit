@@ -1,7 +1,5 @@
 PODS:
-  - AEDataKit (0.0.4)
-  - AELocalDataKit (0.0.1):
-    - AEDataKit
+  - AELocalDataKit (0.0.1)
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
   - FBSnapshotTestCase/Core (2.1.4)
@@ -17,8 +15,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AEDataKit: 390f437daede55ef676eff0b0e4d10a40b95aa8f
-  AELocalDataKit: 9a7d4a80809ea4d71c826308d4f5dc81c901f75c
+  AELocalDataKit: 75a92671957ab9874f95527eb2cfd27a1c74e687
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
 
 PODFILE CHECKSUM: 954322ecad70a2ac1f69c9833b7e948f618cee68

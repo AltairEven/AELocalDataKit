@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "AELDOperationMode.h"
 
+
+NS_ASSUME_NONNULL_BEGIN
+
 @interface AELDPlugMode : NSObject <NSCopying>
 
 @property (nonatomic, copy, readonly) NSString *name; //模式名称
@@ -58,3 +61,6 @@
 - (BOOL)supportOperationType:(AELDOperationType)type;
 
 @end
+
+
+NS_ASSUME_NONNULL_END

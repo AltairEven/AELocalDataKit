@@ -18,7 +18,7 @@
     if (![name isKindOfClass:[NSString class]] || [name length] == 0) {
         return nil;
     }
-    if ((AELDOperationTypeAll & type) != type) {
+    if (type != AELDOperationTypeRead && type != AELDOperationTypeWrite && type != AELDOperationTypeDelete) {
         return nil;
     }
     

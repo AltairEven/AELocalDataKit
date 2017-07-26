@@ -89,11 +89,9 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/AEDataKit/AEDataKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/AELocalDataKit/AELocalDataKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/AEDataKit/AEDataKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/AELocalDataKit/AELocalDataKit.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
