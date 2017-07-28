@@ -39,12 +39,10 @@ NS_ASSUME_NONNULL_BEGIN
  开始数据操作
  
  @param mode 数据操作请求
- @param key 数据操作的对象key
- @param value 数据操作的对象value
  @param response 数据操作返回
  @return 是否开始操作成功，非操作结果
  */
-- (BOOL)startOperation:(AELDOperationMode *)mode forKey:(NSString * __nullable)key value:(id __nullable)value response:(void(^)(AELDResponse *response))response;
+- (BOOL)startOperation:(AELDOperationMode *)mode response:(void(^)(AELDResponse *response))response;
 
 /**
  停止数据操作

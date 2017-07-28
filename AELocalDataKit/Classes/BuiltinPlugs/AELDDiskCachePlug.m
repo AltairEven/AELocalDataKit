@@ -31,7 +31,7 @@
     return [AELDPlugMode modeWithName:NSStringFromClass([self class]) supportOperationType:AELDOperationTypeRead|AELDOperationTypeWrite|AELDOperationTypeDelete];
 }
 
-- (BOOL)startOperation:(AELDOperationMode *)mode forKey:(NSString * _Nullable)key value:(id _Nullable)value response:(nonnull void (^)(AELDResponse * _Nonnull))response {
+- (BOOL)startOperation:(AELDOperationMode *)mode response:(nonnull void (^)(AELDResponse * _Nonnull))response {
     if (!mode) {
         return NO;
     }
@@ -40,7 +40,7 @@
     switch (mode.operationType) {
         case AELDOperationTypeRead:
         {
-            obj = [self.diskCache objectForKey:key];
+            obj = [self.diskCache objectForKey:mode.key];
             if (!obj) {
                 error = [NSError errorWithDomain:@"AELDMemoryCachePlug" code:-1 userInfo:@{NSLocalizedDescriptionKey : @"找不到对象"}];
             }
@@ -48,14 +48,14 @@
             break;
         case AELDOperationTypeWrite:
         {
-            if (![self.diskCache setObject:value forKey:key]) {
+            if (![self.diskCache setObject:mode.value forKey:mode.key]) {
                 error = [NSError errorWithDomain:@"AELDMemoryCachePlug" code:-1 userInfo:@{NSLocalizedDescriptionKey : @"缓存失败"}];
             }
         }
             break;
         case AELDOperationTypeDelete:
         {
-            if (![self.diskCache removeObjectForKey:key]) {
+            if (![self.diskCache removeObjectForKey:mode.key]) {
                 error = [NSError errorWithDomain:@"AELDMemoryCachePlug" code:-1 userInfo:@{NSLocalizedDescriptionKey : @"删除缓存失败"}];
             }
         }

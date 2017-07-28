@@ -32,6 +32,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) AELDOperationType operationType; //数据操作类型，建议根据实际数据操作，或者数据插件的定义来赋值
 
+@property (nonatomic, copy) NSString *key;  //数据操作的对象key
+
+@property (nonatomic, strong) id value;    //数据操作的对象value
+
 /**
  便捷实例化方法
  
