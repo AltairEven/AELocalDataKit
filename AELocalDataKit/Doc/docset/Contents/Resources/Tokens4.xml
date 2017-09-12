@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AELDMemoryCache.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AELDMemoryCache</TokenIdentifier>
+			<Abstract type="html">内存缓存</Abstract>
+			<DeclaredIn>AELDMemoryCache.h</DeclaredIn>
+            
+			
+			<NodeRef refid="4"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/AELDMemoryCache/memoryCacheWithName:willEvictAction:</TokenIdentifier>
+			<Abstract type="html">便捷初始化方法，并默认设置了“自动清理”</Abstract>
+			<DeclaredIn>AELDMemoryCache.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)memoryCacheWithName:(NSString *)name willEvictAction:(nullable void ( ^ ) ( AELDMemoryCache *cache , id object ))action</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>name</Name>
+					<Abstract type="html">缓存名称</Abstract>
+				</Parameter><Parameter>
+					<Name>action</Name>
+					<Abstract type="html">即将释放缓存对象时的回调</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">缓存实例</Abstract></ReturnValue>
+			<Anchor>//api/name/memoryCacheWithName:willEvictAction:</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AELDMemoryCache/autoClearCacheSpace</TokenIdentifier>
+			<Abstract type="html">清除不使用的缓存对象，如果设置了自动清理，则该方法每隔2秒钟会清理一次。</Abstract>
+			<DeclaredIn>AELDMemoryCache.h</DeclaredIn>
+			
+			<Declaration>- (void)autoClearCacheSpace</Declaration>
+			
+			
+			<Anchor>//api/name/autoClearCacheSpace</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

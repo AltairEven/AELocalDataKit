@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AELDDiskCachePlug.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AELDDiskCachePlug</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>AELDDiskCachePlug.h</DeclaredIn>
+            
+			
+			<NodeRef refid="3"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AELDDiskCachePlug/plugMode</TokenIdentifier>
+			<Abstract type="html">获取数据插件模式</Abstract>
+			<DeclaredIn>AELDDiskCachePlug.m</DeclaredIn>
+			
+			<Declaration>- (AELDPlugMode *)plugMode</Declaration>
+			
+			<ReturnValue><Abstract type="html">插件模式</Abstract></ReturnValue>
+			<Anchor>//api/name/plugMode</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AELDDiskCachePlug/startOperation:response:</TokenIdentifier>
+			<Abstract type="html">开始数据操作</Abstract>
+			<DeclaredIn>AELDDiskCachePlug.m</DeclaredIn>
+			
+			<Declaration>- (BOOL)startOperation:(AELDOperationMode *)mode response:(nonnull void ( ^ ) ( AELDResponse *_Nonnull ))response</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>mode</Name>
+					<Abstract type="html">数据操作请求</Abstract>
+				</Parameter><Parameter>
+					<Name>response</Name>
+					<Abstract type="html">数据操作返回</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">是否开始操作成功，非操作结果</Abstract></ReturnValue>
+			<Anchor>//api/name/startOperation:response:</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AELDDiskCachePlug/stopOperation</TokenIdentifier>
+			<Abstract type="html">停止数据操作</Abstract>
+			<DeclaredIn>AELDDiskCachePlug.m</DeclaredIn>
+			
+			<Declaration>- (BOOL)stopOperation</Declaration>
+			
+			<ReturnValue><Abstract type="html">是否停止成功</Abstract></ReturnValue>
+			<Anchor>//api/name/stopOperation</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/NSObject+AELDCacheObject_MemoryCache.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/NSObject(AELDCacheObject_MemoryCache)</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>AELDMemoryCache.h</DeclaredIn>
+            
+			
+			<NodeRef refid="11"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/NSObject/aeld_AutoClearWeight</TokenIdentifier>
+			<Abstract type="html">被自动清理的权重，权重越高，则越会被清理（在大数量循环时，建议使用aeld_AutoClearWeightAtDate:，否则会比较影响性能）</Abstract>
+			<DeclaredIn>AELDMemoryCache.h</DeclaredIn>
+			
+			<Declaration>- (NSInteger)aeld_AutoClearWeight</Declaration>
+			
+			<ReturnValue><Abstract type="html">自动清理权重</Abstract></ReturnValue>
+			<Anchor>//api/name/aeld_AutoClearWeight</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/NSObject/aeld_AutoClearWeightAtDate:</TokenIdentifier>
+			<Abstract type="html">指定时间被自动清理的权重，权重越高，则越会被清理</Abstract>
+			<DeclaredIn>AELDMemoryCache.h</DeclaredIn>
+			
+			<Declaration>- (NSInteger)aeld_AutoClearWeightAtDate:(NSDate *__nullable)date</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>date</Name>
+					<Abstract type="html">指定的时间，当为nil时，权重最高</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">自动清理权重</Abstract></ReturnValue>
+			<Anchor>//api/name/aeld_AutoClearWeightAtDate:</Anchor>
+            <NodeRef refid="11"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

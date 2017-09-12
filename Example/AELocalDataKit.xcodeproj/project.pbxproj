@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		8F4CE42B1F6789E000A37EC1 /* Doc */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 8F4CE42E1F6789E000A37EC1 /* Build configuration list for PBXAggregateTarget "Doc" */;
+			buildPhases = (
+				8F4CE42F1F6789E700A37EC1 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Doc;
+			productName = Doc;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		57ABA013E911AEE67D521C49 /* Pods_AELocalDataKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57A912D72340C1086B5277F6 /* Pods_AELocalDataKit_Tests.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
@@ -249,6 +263,11 @@
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
+					8F4CE42B1F6789E000A37EC1 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = BQ6CWVB72G;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 6003F585195388D10070C39A /* Build configuration list for PBXProject "AELocalDataKit" */;
@@ -266,6 +285,7 @@
 			targets = (
 				6003F589195388D20070C39A /* AELocalDataKit_Example */,
 				6003F5AD195388D20070C39A /* AELocalDataKit_Tests */,
+				8F4CE42B1F6789E000A37EC1 /* Doc */,
 			);
 		};
 /* End PBXProject section */
@@ -352,6 +372,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AELocalDataKit_Tests/Pods-AELocalDataKit_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		8F4CE42F1F6789E700A37EC1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#appledoc Xcode script\n# Start constants\ncompany=\"abc\";\ncompanyID=\"com.abc\";\ncompanyURL=\"http://abc.com\";\ntarget=\"iphoneos\";\n#target=\"macosx\";\noutputPath=${SRCROOT};#输出地址\n# End constants\n/usr/local/bin/appledoc \\\n--project-name \"${PROJECT_NAME}\" \\\n--project-company \"${company}\" \\\n--company-id \"${companyID}\" \\\n--docset-atom-filename \"${company}.atom\" \\\n--docset-feed-url \"${companyURL}/${company}/%DOCSETATOMFILENAME\" \\\n--docset-package-url \"${companyURL}/${company}/%DOCSETPACKAGEFILENAME\" \\\n--docset-fallback-url \"${companyURL}/${company}\" \\\n--output \"${outputPath}\" \\\n--publish-docset \\\n--docset-platform-family \"${target}\" \\\n--logformat xcode \\\n--keep-intermediate-files \\\n--no-repeat-first-par \\\n--no-warn-invalid-crossref \\\n--exit-threshold 2 \\\n\"${PROJECT_DIR}\"";
 		};
 		9E956BEE278C5D11FF5A72BA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -589,6 +622,22 @@
 			};
 			name = Release;
 		};
+		8F4CE42C1F6789E000A37EC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = BQ6CWVB72G;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8F4CE42D1F6789E000A37EC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = BQ6CWVB72G;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -618,6 +667,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		8F4CE42E1F6789E000A37EC1 /* Build configuration list for PBXAggregateTarget "Doc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8F4CE42C1F6789E000A37EC1 /* Debug */,
+				8F4CE42D1F6789E000A37EC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DocSetNodes version="1.0">
+    <TOC>
+        <Node type="folder">
+            <Name>AELocalDataKit</Name>
+            <Path>index.html</Path>
+			<Subnodes>
+                
+				
+				<Node type="folder">
+					<Name>Classes</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="1"/>
+						<NodeRef refid="2"/>
+						
+					</Subnodes>
+				</Node>
+				
+				
+				<Node>
+					<Name>Categories</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="3"/>
+						<NodeRef refid="4"/>
+						
+					</Subnodes>
+				</Node>
+				
+                
+                
+				<Node>
+					<Name>Constants</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="5"/>
+						<NodeRef refid="6"/>
+						
+					</Subnodes>
+				</Node>
+				
+                
+			</Subnodes>
+        </Node>
+    </TOC>
+	<Library>
+		
+		<Node id="1" type="file" documentType="reference">
+            <Name>FBSnapshotTestCase</Name>
+            <Path>Classes/FBSnapshotTestCase.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/FBSnapshotTestCase.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/FBSnapshotTestCase.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/FBSnapshotTestCase.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/FBSnapshotTestCase.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="2" type="file" documentType="reference">
+            <Name>FBSnapshotTestController</Name>
+            <Path>Classes/FBSnapshotTestController.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Classes/FBSnapshotTestController.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Classes/FBSnapshotTestController.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                <Node type="section">
+                    <Path>Classes/FBSnapshotTestController.html</Path>
+                    <Name>Properties</Name>
+                    <Anchor>properties</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Classes/FBSnapshotTestController.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		
+		<Node id="3" type="file" documentType="reference">
+            <Name>UIApplication(StrictKeyWindow)</Name>
+            <Path>Categories/UIApplication+StrictKeyWindow.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Categories/UIApplication+StrictKeyWindow.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Categories/UIApplication+StrictKeyWindow.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                
+                <Node type="section">
+                    <Path>Categories/UIApplication+StrictKeyWindow.html</Path>
+                    <Name>Instance Methods</Name>
+                    <Anchor>instance_methods</Anchor>
+                </Node>
+                
+            </Subnodes>
+            
+        </Node>
+		<Node id="4" type="file" documentType="reference">
+            <Name>UIImage(Snapshot)</Name>
+            <Path>Categories/UIImage+Snapshot.html</Path>
+            
+                <Subnodes>
+                <Node type="section">
+                    <Path>Categories/UIImage+Snapshot.html</Path>
+                    <Name>Overview</Name>
+                    <Anchor>overview</Anchor>
+                </Node>
+                <Node type="section">
+                    <Path>Categories/UIImage+Snapshot.html</Path>
+                    <Name>Tasks</Name>
+                    <Anchor>tasks</Anchor>
+                </Node>
+                
+                
+                <Node type="section">
+                    <Path>Categories/UIImage+Snapshot.html</Path>
+                    <Name>Class Methods</Name>
+                    <Anchor>class_methods</Anchor>
+                </Node>
+                
+                
+            </Subnodes>
+            
+        </Node>
+		
+        
+        <Node id="5" type="file" documentType="reference">
+            <Name>FBSnapshotTestControllerErrorCode</Name>
+            <Path>Constants/FBSnapshotTestControllerErrorCode.html</Path>
+            
+        </Node>
+		<Node id="6" type="file" documentType="reference">
+            <Name>FBTestSnapshotFileNameType</Name>
+            <Path>Constants/FBTestSnapshotFileNameType.html</Path>
+            
+        </Node>
+		
+        
+	</Library>
+</DocSetNodes>

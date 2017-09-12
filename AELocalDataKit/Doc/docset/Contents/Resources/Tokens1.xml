@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AELDCache.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AELDCache</TokenIdentifier>
+			<Abstract type="html">Cache基类，需继承后使用</Abstract>
+			<DeclaredIn>AELDCache.h</DeclaredIn>
+            
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+        
+        
+	</File>
+</Tokens>

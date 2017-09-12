@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AELDDiskCache.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AELDDiskCache</TokenIdentifier>
+			<Abstract type="html">磁盘缓存</Abstract>
+			<DeclaredIn>AELDDiskCache.h</DeclaredIn>
+            
+			
+			<NodeRef refid="2"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/AELDDiskCache/diskCacheWithName:</TokenIdentifier>
+			<Abstract type="html">便捷初始化方法，并默认设置了“自动清理”</Abstract>
+			<DeclaredIn>AELDDiskCache.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)diskCacheWithName:(NSString *)name</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>name</Name>
+					<Abstract type="html">缓存名称</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">缓存实例</Abstract></ReturnValue>
+			<Anchor>//api/name/diskCacheWithName:</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AELDDiskCache/setObject:forKey:</TokenIdentifier>
+			<Abstract type="html">加入磁盘缓存</Abstract>
+			<DeclaredIn>AELDDiskCache.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)setObject:(ObjectType&lt;NSCoding&gt;)obj forKey:(NSString *)key</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>obj</Name>
+					<Abstract type="html">缓存对象，需要遵循NSCoding协议</Abstract>
+				</Parameter><Parameter>
+					<Name>key</Name>
+					<Abstract type="html">缓存对象的key</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">缓存成功或者失败</Abstract></ReturnValue>
+			<Anchor>//api/name/setObject:forKey:</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AELDDiskCache/autoClearCacheSpace</TokenIdentifier>
+			<Abstract type="html">清除过期的缓存对象，如果设置了自动清理，则该方法在初始化后会自动调用</Abstract>
+			<DeclaredIn>AELDDiskCache.h</DeclaredIn>
+			
+			<Declaration>- (void)autoClearCacheSpace</Declaration>
+			
+			
+			<Anchor>//api/name/autoClearCacheSpace</Anchor>
+            <NodeRef refid="2"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/UIApplication+StrictKeyWindow.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/UIApplication(StrictKeyWindow)</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIApplication+StrictKeyWindow.h</DeclaredIn>
+            
+			
+			<NodeRef refid="3"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIApplication/fb_strictKeyWindow</TokenIdentifier>
+			<Abstract type="html">The receiver&apos;s @c keyWindow. Raises an assertion if @c nil.</Abstract>
+			<DeclaredIn>UIApplication+StrictKeyWindow.h</DeclaredIn>
+			
+			<Declaration>- (UIWindow *)fb_strictKeyWindow</Declaration>
+			
+			<ReturnValue><Abstract type="html">The receiver&apos;s @c keyWindow. Raises an assertion if @c nil.</Abstract></ReturnValue>
+			<Anchor>//api/name/fb_strictKeyWindow</Anchor>
+            <NodeRef refid="3"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

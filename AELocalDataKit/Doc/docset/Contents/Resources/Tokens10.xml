@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/NSObject+AELDCacheObject.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/NSObject(AELDCacheObject)</TokenIdentifier>
+			<Abstract type="html">对NSObject的缓存扩展</Abstract>
+			<DeclaredIn>AELDCache.h</DeclaredIn>
+            
+			
+			<NodeRef refid="10"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/NSObject/aeld_ValidateCacheObject</TokenIdentifier>
+			<Abstract type="html">判断是否是合法的缓存对象</Abstract>
+			<DeclaredIn>AELDCache.h</DeclaredIn>
+			
+			<Declaration>- (BOOL)aeld_ValidateCacheObject</Declaration>
+			
+			<ReturnValue><Abstract type="html">是否合法</Abstract></ReturnValue>
+			<Anchor>//api/name/aeld_ValidateCacheObject</Anchor>
+            <NodeRef refid="10"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

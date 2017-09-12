@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AELDOperationMode.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AELDOperationMode</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>AELDOperationMode.h</DeclaredIn>
+            
+			
+			<NodeRef refid="6"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/AELDOperationMode/modeWithName:operationType:</TokenIdentifier>
+			<Abstract type="html">便捷实例化方法</Abstract>
+			<DeclaredIn>AELDOperationMode.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)modeWithName:(NSString *)name operationType:(AELDOperationType)type</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>name</Name>
+					<Abstract type="html">模式名称</Abstract>
+				</Parameter><Parameter>
+					<Name>type</Name>
+					<Abstract type="html">操作类型</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">类实例</Abstract></ReturnValue>
+			<Anchor>//api/name/modeWithName:operationType:</Anchor>
+            <NodeRef refid="6"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

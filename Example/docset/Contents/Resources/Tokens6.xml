@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Constants/FBTestSnapshotFileNameType.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/c/tdef/FBTestSnapshotFileNameType</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>FBSnapshotTestController.m</DeclaredIn>
+            
+			
+			<NodeRef refid="6"/>
+		</Token>
+		
+		
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/FBTestSnapshotFileNameTypeReference</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>FBTestSnapshotFileNameTypeReference</Declaration>
+            
+            <DeclaredIn>FBSnapshotTestController.m</DeclaredIn>
+            
+            <NodeRef refid="6"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/FBTestSnapshotFileNameTypeFailedReference</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>FBTestSnapshotFileNameTypeFailedReference</Declaration>
+            
+            <DeclaredIn>FBSnapshotTestController.m</DeclaredIn>
+            
+            <NodeRef refid="6"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/FBTestSnapshotFileNameTypeFailedTest</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>FBTestSnapshotFileNameTypeFailedTest</Declaration>
+            
+            <DeclaredIn>FBSnapshotTestController.m</DeclaredIn>
+            
+            <NodeRef refid="6"/>
+        </Token>
+        
+        <Token>
+            <TokenIdentifier>//apple_ref/c/econst/FBTestSnapshotFileNameTypeFailedTestDiff</TokenIdentifier>
+            <Abstract type="html"></Abstract>
+            <Declaration>FBTestSnapshotFileNameTypeFailedTestDiff</Declaration>
+            
+            <DeclaredIn>FBSnapshotTestController.m</DeclaredIn>
+            
+            <NodeRef refid="6"/>
+        </Token>
+        
+        
+	</File>
+</Tokens>

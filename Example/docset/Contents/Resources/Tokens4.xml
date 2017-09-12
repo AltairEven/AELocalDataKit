@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/UIImage+Snapshot.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/UIImage(Snapshot)</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>UIImage+Snapshot.h</DeclaredIn>
+            
+			
+			<NodeRef refid="4"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIImage/fb_imageForLayer:</TokenIdentifier>
+			<Abstract type="html">Uses renderInContext: to get a snapshot of the layer.</Abstract>
+			<DeclaredIn>UIImage+Snapshot.h</DeclaredIn>
+			
+			<Declaration>+ (UIImage *)fb_imageForLayer:(CALayer *)layer</Declaration>
+			
+			
+			<Anchor>//api/name/fb_imageForLayer:</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIImage/fb_imageForViewLayer:</TokenIdentifier>
+			<Abstract type="html">Uses renderInContext: to get a snapshot of the view layer.</Abstract>
+			<DeclaredIn>UIImage+Snapshot.h</DeclaredIn>
+			
+			<Declaration>+ (UIImage *)fb_imageForViewLayer:(UIView *)view</Declaration>
+			
+			
+			<Anchor>//api/name/fb_imageForViewLayer:</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UIImage/fb_imageForView:</TokenIdentifier>
+			<Abstract type="html">Uses drawViewHierarchyInRect: to get a snapshot of the view and adds the view into a window if needed.</Abstract>
+			<DeclaredIn>UIImage+Snapshot.h</DeclaredIn>
+			
+			<Declaration>+ (UIImage *)fb_imageForView:(UIView *)view</Declaration>
+			
+			
+			<Anchor>//api/name/fb_imageForView:</Anchor>
+            <NodeRef refid="4"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>

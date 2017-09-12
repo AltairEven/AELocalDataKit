@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AELocalDataSocket.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AELocalDataSocket</TokenIdentifier>
+			<Abstract type="html">本地数据操作插座</Abstract>
+			<DeclaredIn>AELocalDataSocket.h</DeclaredIn>
+            
+			
+			<NodeRef refid="9"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/AELocalDataSocket/publicSocket</TokenIdentifier>
+			<Abstract type="html">本地数据操作插座单实例方法</Abstract>
+			<DeclaredIn>AELocalDataSocket.h</DeclaredIn>
+			
+			<Declaration>+ (instancetype)publicSocket</Declaration>
+			
+			<ReturnValue><Abstract type="html">类实例</Abstract></ReturnValue>
+			<Anchor>//api/name/publicSocket</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AELocalDataSocket/plugInBuiltInPlugs:</TokenIdentifier>
+			<Abstract type="html">插入内建插件</Abstract>
+			<DeclaredIn>AELocalDataSocket.h</DeclaredIn>
+			
+			<Declaration>- (void)plugInBuiltInPlugs:(AELDBuiltInPlugStrategy)strategy</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>strategy</Name>
+					<Abstract type="html">插件策略</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/plugInBuiltInPlugs:</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AELocalDataSocket/plugIn:</TokenIdentifier>
+			<Abstract type="html">插入插件</Abstract>
+			<DeclaredIn>AELocalDataSocket.h</DeclaredIn>
+			
+			<Declaration>- (void)plugIn:(id&lt;AELocalDataPlugProtocal&gt;)plug</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>plug</Name>
+					<Abstract type="html">被插入的插件</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/plugIn:</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AELocalDataSocket/plugOutWithMode:</TokenIdentifier>
+			<Abstract type="html">拔出插件</Abstract>
+			<DeclaredIn>AELocalDataSocket.h</DeclaredIn>
+			
+			<Declaration>- (void)plugOutWithMode:(AELDPlugMode *)mode</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>mode</Name>
+					<Abstract type="html">被拔出插件的数据操作模式</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/plugOutWithMode:</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AELocalDataSocket/plugWithMode:</TokenIdentifier>
+			<Abstract type="html">获取对应数据操作模式的已插入插件</Abstract>
+			<DeclaredIn>AELocalDataSocket.h</DeclaredIn>
+			
+			<Declaration>- (id&lt;AELocalDataPlugProtocal&gt; __nullable)plugWithMode:(AELDPlugMode *)mode</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>mode</Name>
+					<Abstract type="html">数据操作模式</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">对应数据操作模式的已插入插件</Abstract></ReturnValue>
+			<Anchor>//api/name/plugWithMode:</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AELocalDataSocket/plugSupportedOperationWithMode:</TokenIdentifier>
+			<Abstract type="html">获取包含对应数据操作模式的已插入插件</Abstract>
+			<DeclaredIn>AELocalDataSocket.h</DeclaredIn>
+			
+			<Declaration>- (id&lt;AELocalDataPlugProtocal&gt; __nullable)plugSupportedOperationWithMode:(AELDOperationMode *)mode</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>mode</Name>
+					<Abstract type="html">数据操作模式</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">对应数据操作模式的已插入插件</Abstract></ReturnValue>
+			<Anchor>//api/name/plugSupportedOperationWithMode:</Anchor>
+            <NodeRef refid="9"/>
+		</Token>
+		
+        
+        
+	</File>
+</Tokens>
