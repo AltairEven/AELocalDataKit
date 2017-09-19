@@ -36,6 +36,8 @@
 		7E9B14D5F8842A86CA86F2AF45230725 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8F339250A1C3C5C5C5364254007103 /* XCTest.framework */; };
 		81C9933D08C0822F02F562884745033F /* AELDTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 949DBAA69B53FD93CDD7018B02A4C069 /* AELDTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		841FF232C33C7D49C58CEFDBE7EEB92B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA323C90663942983643D7A4D1F697C8 /* UIKit.framework */; };
+		8F4EC9BA1F70CCD800728136 /* AELDIntegratedCachePlug.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F4EC9B81F70CCD800728136 /* AELDIntegratedCachePlug.h */; };
+		8F4EC9BB1F70CCD800728136 /* AELDIntegratedCachePlug.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F4EC9B91F70CCD800728136 /* AELDIntegratedCachePlug.m */; };
 		90DBC444252C7FA1BDB91EA976AF360F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E88A450A84E3957158B3B3459740AA /* Foundation.framework */; };
 		91D0138ACFAD733E4061F12E450C336C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6E88A450A84E3957158B3B3459740AA /* Foundation.framework */; };
 		91F137478BF7B961010DD88632B16070 /* AELDOperationMode.h in Headers */ = {isa = PBXBuildFile; fileRef = 7367897459DB7E406A8F4C4F9FFBCF79 /* AELDOperationMode.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -81,7 +83,7 @@
 /* Begin PBXFileReference section */
 		034B90B735BBF7E71C582CC736629634 /* Pods-AELocalDataKit_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AELocalDataKit_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		052258A488A96C35531FAC73C4F42924 /* FBSnapshotTestController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestController.m; path = FBSnapshotTestCase/FBSnapshotTestController.m; sourceTree = "<group>"; };
-		093F5D73983C514C03334E95A6E6AC20 /* AELocalDataKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = AELocalDataKit.modulemap; sourceTree = "<group>"; };
+		093F5D73983C514C03334E95A6E6AC20 /* AELocalDataKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = AELocalDataKit.modulemap; sourceTree = "<group>"; };
 		0A6C682B93B11D33C1F09A52ECB2EC9C /* Pods-AELocalDataKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AELocalDataKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		0B161931541BFE46DFEA2092EDDDA815 /* UIImage+Snapshot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Snapshot.h"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.h"; sourceTree = "<group>"; };
 		0B3702D6FB624D8F60EBAA367C8DC12F /* Pods-AELocalDataKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AELocalDataKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -90,8 +92,8 @@
 		168158779D7173AD754EF4665AADA6FE /* AELDMemoryCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AELDMemoryCache.m; sourceTree = "<group>"; };
 		1A2A86BA87912383E6FD3A716C21A897 /* AELDOperationMode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AELDOperationMode.m; sourceTree = "<group>"; };
 		1B62EA4BC3391AEEA0C966B99F9885FF /* AELocalDataKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AELocalDataKit-umbrella.h"; sourceTree = "<group>"; };
-		228295528EBA4465323D20FABA6E6F9C /* AELocalDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AELocalDataKit.framework; path = AELocalDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D7610C23B14C991DE0E3E051ABDF2E5 /* Pods_AELocalDataKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AELocalDataKit_Example.framework; path = "Pods-AELocalDataKit_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		228295528EBA4465323D20FABA6E6F9C /* AELocalDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AELocalDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D7610C23B14C991DE0E3E051ABDF2E5 /* Pods_AELocalDataKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AELocalDataKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EECE81A9AEC1ED1057A9C3C88DBCEBE /* UIApplication+StrictKeyWindow.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+StrictKeyWindow.m"; path = "FBSnapshotTestCase/Categories/UIApplication+StrictKeyWindow.m"; sourceTree = "<group>"; };
 		31A000B9824ED2F3CE50248E232B9E36 /* AELocalDataKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AELocalDataKit-dummy.m"; sourceTree = "<group>"; };
 		37D1705835D0DF22E1B79EDEAE6CC561 /* AELDMemoryCachePlug.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AELDMemoryCachePlug.m; sourceTree = "<group>"; };
@@ -108,11 +110,11 @@
 		4EF405C62374AF26A2DAEAB8F5836808 /* AELDDiskCachePlug.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AELDDiskCachePlug.h; sourceTree = "<group>"; };
 		52C18C0EB1FED5EB5CE3B0E768AC510F /* FBSnapshotTestCase-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FBSnapshotTestCase-dummy.m"; sourceTree = "<group>"; };
 		5506BFD34CA961829E4FB37722A95091 /* Pods-AELocalDataKit_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AELocalDataKit_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		560731392B2B461C56DF80E17A729880 /* Pods-AELocalDataKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-AELocalDataKit_Example.modulemap"; sourceTree = "<group>"; };
+		560731392B2B461C56DF80E17A729880 /* Pods-AELocalDataKit_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-AELocalDataKit_Example.modulemap"; sourceTree = "<group>"; };
 		58A2557E7CE20AACCD1B28B1CD1F920D /* FBSnapshotTestCasePlatform.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCasePlatform.m; path = FBSnapshotTestCase/FBSnapshotTestCasePlatform.m; sourceTree = "<group>"; };
 		595DDBF7D283F672639A816FC47D1F43 /* AELocalDataKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AELocalDataKit.h; sourceTree = "<group>"; };
 		59E294CD880F03458416847097A03AFB /* AELDMemoryCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AELDMemoryCache.h; sourceTree = "<group>"; };
-		5A3563CFF7B1D30C1B384A6C78C31B3E /* Pods-AELocalDataKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-AELocalDataKit_Tests.modulemap"; sourceTree = "<group>"; };
+		5A3563CFF7B1D30C1B384A6C78C31B3E /* Pods-AELocalDataKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-AELocalDataKit_Tests.modulemap"; sourceTree = "<group>"; };
 		5BFC8FD9EE30D52D7FB0C440180A87CC /* AELocalDataKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AELocalDataKit-prefix.pch"; sourceTree = "<group>"; };
 		6488AC0AAAD8CBF27F55450F1B6558E5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A4316C6F50175D3FE829F23D9845A15 /* Pods-AELocalDataKit_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AELocalDataKit_Example-resources.sh"; sourceTree = "<group>"; };
@@ -125,15 +127,17 @@
 		7CC99E059335DD0990B26969A4082143 /* Pods-AELocalDataKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AELocalDataKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		7E3DB4D092B985E76E227F7F313C6981 /* FBSnapshotTestCasePlatform.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestCasePlatform.h; path = FBSnapshotTestCase/FBSnapshotTestCasePlatform.h; sourceTree = "<group>"; };
 		817782FCA9CD18CEB644B8D00F0F9D4C /* AELDCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AELDCache.m; sourceTree = "<group>"; };
-		823558E8AC8EB39D028DB5FBBEA227A3 /* FBSnapshotTestCase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = FBSnapshotTestCase.modulemap; sourceTree = "<group>"; };
+		823558E8AC8EB39D028DB5FBBEA227A3 /* FBSnapshotTestCase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FBSnapshotTestCase.modulemap; sourceTree = "<group>"; };
 		83B8E9A9A15C3B77DB5D517911AE3FDB /* AELDDiskCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AELDDiskCache.h; sourceTree = "<group>"; };
 		85E250EF19C5B5671AEC10BEB508D087 /* UIImage+Diff.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Diff.h"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.h"; sourceTree = "<group>"; };
 		899A89B01BB969863ED7FA1B2036DF22 /* Pods-AELocalDataKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AELocalDataKit_Example-umbrella.h"; sourceTree = "<group>"; };
 		8A866DBBE75F8A03619C6C616B499260 /* AELDPlugMode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = AELDPlugMode.m; sourceTree = "<group>"; };
+		8F4EC9B81F70CCD800728136 /* AELDIntegratedCachePlug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AELDIntegratedCachePlug.h; sourceTree = "<group>"; };
+		8F4EC9B91F70CCD800728136 /* AELDIntegratedCachePlug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AELDIntegratedCachePlug.m; sourceTree = "<group>"; };
 		9300A9D4C894145799B2513094219495 /* AELocalDataSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AELocalDataSocket.h; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		949DBAA69B53FD93CDD7018B02A4C069 /* AELDTools.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AELDTools.h; sourceTree = "<group>"; };
-		9B73971FF0FF433E47108DA7CE57FB86 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FBSnapshotTestCase.framework; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B73971FF0FF433E47108DA7CE57FB86 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CB28E6A092BB3224191646E3AE27966 /* Pods-AELocalDataKit_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AELocalDataKit_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9F678A70A91F6DC3B2038D4958FC8A39 /* Pods-AELocalDataKit_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AELocalDataKit_Example-frameworks.sh"; sourceTree = "<group>"; };
 		A27810809BAD71E4022600B21251449F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -145,7 +149,7 @@
 		B94557A68B61463B3F5E895D4D3B3DCA /* AELDMemoryCachePlug.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AELDMemoryCachePlug.h; sourceTree = "<group>"; };
 		B9CEF7D6C5E08AB80E58DABC75D882BC /* UIImage+Diff.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Diff.m"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.m"; sourceTree = "<group>"; };
 		C26F07F4B8D92F0052AD6586A1B2939E /* AELDPlugMode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = AELDPlugMode.h; sourceTree = "<group>"; };
-		C4C911DAD3EEA9A8139638AC603B2E82 /* Pods_AELocalDataKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AELocalDataKit_Tests.framework; path = "Pods-AELocalDataKit_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4C911DAD3EEA9A8139638AC603B2E82 /* Pods_AELocalDataKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AELocalDataKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E88A450A84E3957158B3B3459740AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		CC12BCFA3FC0B8C307F5B38C673EDD12 /* FBSnapshotTestCase-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSnapshotTestCase-prefix.pch"; sourceTree = "<group>"; };
 		D14A9BA6A50EAC4D58961755D594270F /* Pods-AELocalDataKit_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AELocalDataKit_Tests-resources.sh"; sourceTree = "<group>"; };
@@ -203,7 +207,6 @@
 			children = (
 				900A6EC4121E00271CD7886A383234B3 /* Classes */,
 			);
-			name = AELocalDataKit;
 			path = AELocalDataKit;
 			sourceTree = "<group>";
 		};
@@ -236,7 +239,6 @@
 				1549F91FCD089822594C1F5DB8AB9E8F /* Support Files */,
 				99E46DD4AB2256791F111C718CB0EEF8 /* SwiftSupport */,
 			);
-			name = FBSnapshotTestCase;
 			path = FBSnapshotTestCase;
 			sourceTree = "<group>";
 		};
@@ -250,7 +252,6 @@
 				59E294CD880F03458416847097A03AFB /* AELDMemoryCache.h */,
 				168158779D7173AD754EF4665AADA6FE /* AELDMemoryCache.m */,
 			);
-			name = Cache;
 			path = Cache;
 			sourceTree = "<group>";
 		};
@@ -321,7 +322,6 @@
 				4621D3B909C25C6A731F5F6CD7C2CB0A /* AELDResponse.h */,
 				6FD55DCD1D1CE2EF53D8C1A166D3DB1B /* AELDResponse.m */,
 			);
-			name = Interface;
 			path = Interface;
 			sourceTree = "<group>";
 		};
@@ -345,7 +345,6 @@
 				9300A9D4C894145799B2513094219495 /* AELocalDataSocket.h */,
 				F78DEC007220E51C2BB7875DF1372398 /* AELocalDataSocket.m */,
 			);
-			name = Socket;
 			path = Socket;
 			sourceTree = "<group>";
 		};
@@ -371,7 +370,6 @@
 				89B9C1FF432E15098088A15690E5E682 /* Socket */,
 				D67B5F3E02547247223E648EDE5F274F /* Tools */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -418,7 +416,6 @@
 				949DBAA69B53FD93CDD7018B02A4C069 /* AELDTools.h */,
 				10F0B6FBB4DEC52A85F21F96C9EFBA2D /* AELDTools.m */,
 			);
-			name = Tools;
 			path = Tools;
 			sourceTree = "<group>";
 		};
@@ -450,8 +447,9 @@
 				AD33F16286F700C92055FA156960F8F3 /* AELDDiskCachePlug.m */,
 				B94557A68B61463B3F5E895D4D3B3DCA /* AELDMemoryCachePlug.h */,
 				37D1705835D0DF22E1B79EDEAE6CC561 /* AELDMemoryCachePlug.m */,
+				8F4EC9B81F70CCD800728136 /* AELDIntegratedCachePlug.h */,
+				8F4EC9B91F70CCD800728136 /* AELDIntegratedCachePlug.m */,
 			);
-			name = BuiltinPlugs;
 			path = BuiltinPlugs;
 			sourceTree = "<group>";
 		};
@@ -471,6 +469,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D84B3E25C9591F08B62AFA42E68B505 /* AELDCache.h in Headers */,
+				8F4EC9BA1F70CCD800728136 /* AELDIntegratedCachePlug.h in Headers */,
 				AC2B688C5AE16AC5214DD6D53CA3EE3E /* AELDDiskCache.h in Headers */,
 				98BC6D2C57F3A2AFC131CE9AB1AA8A35 /* AELDDiskCachePlug.h in Headers */,
 				22ED552376AAFA479B8D91F32AB99BD0 /* AELDMemoryCache.h in Headers */,
@@ -642,6 +641,7 @@
 				6BCB96F49B14DB61032249F42A50968D /* AELDCache.m in Sources */,
 				41D7F1B0F71D68193B689D7687AEAA24 /* AELDDiskCache.m in Sources */,
 				08806E49B3D068412BB8665633995747 /* AELDDiskCachePlug.m in Sources */,
+				8F4EC9BB1F70CCD800728136 /* AELDIntegratedCachePlug.m in Sources */,
 				D605D6BFB3B4BCBA6FDAC0C7C50730E2 /* AELDMemoryCache.m in Sources */,
 				4865AC1F9425F1D36730433CF2BEC540 /* AELDMemoryCachePlug.m in Sources */,
 				141EB3A2269BF51D36126FE6820AAFFF /* AELDOperationMode.m in Sources */,
