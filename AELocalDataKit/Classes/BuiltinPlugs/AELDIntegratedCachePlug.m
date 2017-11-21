@@ -29,7 +29,7 @@
         return NO;
     }
     AELDMemoryCachePlug *memoryCachePlug = [[AELocalDataSocket publicSocket] plugWithMode:[AELDPlugMode modeWithName:NSStringFromClass([AELDMemoryCachePlug class]) supportOperationType:AELDOperationTypeRead|AELDOperationTypeWrite|AELDOperationTypeDelete|AELDOperationTypeClear]];
-    AELDDiskCachePlug *diskCachePlug = [[AELocalDataSocket publicSocket] plugWithMode:[AELDPlugMode modeWithName:NSStringFromClass([AELDMemoryCachePlug class]) supportOperationType:AELDOperationTypeRead|AELDOperationTypeWrite|AELDOperationTypeDelete|AELDOperationTypeClear]];
+    AELDDiskCachePlug *diskCachePlug = [[AELocalDataSocket publicSocket] plugWithMode:[AELDPlugMode modeWithName:NSStringFromClass([AELDDiskCachePlug class]) supportOperationType:AELDOperationTypeRead|AELDOperationTypeWrite|AELDOperationTypeDelete|AELDOperationTypeClear]];
     if (!memoryCachePlug && !diskCachePlug) {
         return NO;
     }
