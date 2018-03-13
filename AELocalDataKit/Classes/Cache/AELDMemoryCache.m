@@ -15,7 +15,7 @@
 
 - (void)setAeld_Memory_HitCount:(NSInteger)aeld_Memory_HitCount {
     NSNumber *count = [NSNumber numberWithInteger:aeld_Memory_HitCount];
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_HitCount", count, OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_HitCount", count, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (NSInteger)aeld_Memory_HitCount {
@@ -29,12 +29,12 @@
 
 - (void)addAeld_MemoryCache_HitCount {
     NSNumber *count = [NSNumber numberWithInteger:self.aeld_Memory_HitCount + 1];
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_HitCount", count, OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_HitCount", count, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (void)clearAeld_MemoryCache_HitCount {
     NSNumber *count = [NSNumber numberWithInteger:0];
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_HitCount", count, OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_Memory_HitCount", count, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (void)setAeld_MemoryCache_LastGetDate:(NSDate * _Nullable)aeld_LastGetDate {

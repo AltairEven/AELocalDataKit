@@ -25,7 +25,7 @@
 
 - (void)setAeld_MimeType:(AELDCacheObjectType)aeld_MimeType {
     NSNumber *type = [NSNumber numberWithInteger:aeld_MimeType];
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_MimeType", type, OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_MimeType", type, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (AELDCacheObjectType)aeld_MimeType {
@@ -35,7 +35,7 @@
 
 - (void)setAeld_TotalBytes:(NSUInteger)aeld_TotalBytes {
     NSNumber *totalBytes = [NSNumber numberWithInteger:aeld_TotalBytes];
-    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_TotalBytes", totalBytes, OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, @"AELocalDataKit_CacheObject_TotalBytes", totalBytes, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (NSUInteger)aeld_TotalBytes {
